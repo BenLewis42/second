@@ -162,7 +162,7 @@ excerpt: "An approach to ethics emphasizing character development and human flou
 
 Virtue ethics is a philosophical approach that emphasizes...
 
-## Key Ideas
+## Concepts
 
 ### Arete (Excellence)
 The concept of [[Arete]] is central to virtue ethics. It refers to...

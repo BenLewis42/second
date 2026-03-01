@@ -30,7 +30,7 @@ export default async function TagsPage() {
       </Link>
 
       <h1>Explore by Tags</h1>
-      <p style={{ color: '#4b5563', marginBottom: '2rem' }}>
+      <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
         Navigate the cultural wiki by topics and concepts. Click any tag to see
         all related content.
       </p>
@@ -75,11 +75,11 @@ export default async function TagsPage() {
         </div>
       </div>
 
-      <hr style={{ margin: '3rem 0', borderColor: '#e5e7eb' }} />
+      <hr style={{ margin: '3rem 0', borderColor: 'var(--border-color)' }} />
 
       <div className="card-highlight">
         <h3 style={{ marginTop: 0 }}>Top Tags</h3>
-        <p style={{ color: '#4b5563' }}>
+        <p style={{ color: 'var(--text-secondary)' }}>
           Most frequently used concepts in the cultural wiki:
         </p>
         <div style={{ marginTop: '1.5rem' }}>
@@ -96,7 +96,7 @@ export default async function TagsPage() {
                   }}
                 />
               </div>
-              <span style={{ fontSize: '0.875rem', color: '#4b5563', minWidth: '3rem', textAlign: 'right' }}>
+              <span style={{ fontSize: '0.875rem', color: 'var(--text-tertiary)', minWidth: '3rem', textAlign: 'right' }}>
                 {count}
               </span>
             </div>

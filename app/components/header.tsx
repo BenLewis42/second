@@ -3,8 +3,8 @@
 export default function Header() {
   return (
     <header style={{
-      borderBottom: '1px solid #e5e7eb',
-      backgroundColor: '#ffffff',
+      borderBottom: '1px solid var(--border-color)',
+      backgroundColor: 'var(--bg-primary)',
       position: 'sticky',
       top: 0,
       zIndex: 40
@@ -18,7 +18,7 @@ export default function Header() {
           <a href="/" style={{
             fontSize: '1.5rem',
             fontWeight: 'bold',
-            color: '#111827',
+            color: 'var(--text-primary)',
             textDecoration: 'none'
           }}>
             🧠 Second Brain
@@ -27,37 +27,37 @@ export default function Header() {
             <a
               href="/philosophy"
               style={{
-                color: '#4b5563',
+                color: 'var(--text-primary)',
                 textDecoration: 'none',
-                transition: 'color 0.2s'
+                transition: 'opacity 0.2s'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#111827'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#4b5563'}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
             >
               Philosophy
             </a>
             <a
               href="/art"
               style={{
-                color: '#4b5563',
+                color: 'var(--text-primary)',
                 textDecoration: 'none',
-                transition: 'color 0.2s'
+                transition: 'opacity 0.2s'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#111827'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#4b5563'}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
             >
               Art
             </a>
             <a
               href="/tags"
               style={{
-                color: '#2563eb',
+                color: 'var(--link-color)',
                 fontWeight: '500',
                 textDecoration: 'none',
                 transition: 'color 0.2s'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#1d4ed8'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#2563eb'}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--link-color-hover)'}
+              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--link-color)'}
             >
               🔍 Wiki
             </a>

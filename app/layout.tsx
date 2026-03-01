@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ backgroundColor: '#ffffff', color: '#111827', margin: 0, padding: 0, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+      <body style={{ margin: 0, padding: 0 }}>
         <Header />
         <main style={{ minHeight: '100vh' }}>{children}</main>
         <Footer />

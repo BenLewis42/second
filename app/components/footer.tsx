@@ -3,8 +3,8 @@
 export default function Footer() {
   return (
     <footer style={{
-      borderTop: '1px solid #e5e7eb',
-      backgroundColor: '#f9fafb',
+      borderTop: '1px solid var(--border-color)',
+      backgroundColor: 'var(--bg-secondary)',
       marginTop: '4rem'
     }}>
       <div style={{
@@ -12,7 +12,7 @@ export default function Footer() {
         margin: '0 auto',
         padding: '2rem 1.5rem',
         textAlign: 'center',
-        color: '#4b5563',
+        color: 'var(--text-primary)',
         fontSize: '0.875rem'
       }}>
         <p>A personal second brain for art and philosophy</p>
@@ -20,7 +20,7 @@ export default function Footer() {
           Built with{' '}
           <a
             href="https://nextjs.org"
-            style={{ color: '#2563eb', textDecoration: 'none' }}
+            style={{ color: 'var(--link-color)', textDecoration: 'none' }}
             onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
             onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
           >

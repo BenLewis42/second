@@ -203,7 +203,7 @@ excerpt: "One-sentence description of this entry"
 
 Brief introduction and context.
 
-## Key Ideas
+## Concepts
 
 ### First Idea
 Explanation. Related to [[other-concept]].

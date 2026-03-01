@@ -12,7 +12,7 @@ export default function Home() {
     <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
       <div style={{ marginBottom: '3rem' }}>
         <h1>Welcome to My Second Brain</h1>
-        <p style={{ fontSize: '1.125rem', color: '#4b5563', maxWidth: '42rem' }}>
+        <p style={{ fontSize: '1.125rem', color: 'var(--text-secondary)', maxWidth: '42rem' }}>
           A curated cultural wiki collecting interesting insights, observations, and
           knowledge about art and philosophy. Explore topics, ideas, and the
           interconnections between creative and philosophical thought.
@@ -21,7 +21,7 @@ export default function Home() {
 
       <div className="card-highlight" style={{ marginBottom: '3rem' }}>
         <h2 style={{ marginTop: 0 }}>🔍 Explore as a Wiki</h2>
-        <p style={{ color: '#1e3a8a', marginBottom: '1rem' }}>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
           This wiki uses interconnected concepts, tags, and backlinks to help you navigate and discover relationships between ideas.
         </p>
         <Link
@@ -36,7 +36,7 @@ export default function Home() {
         {categories.map((category) => (
           <div key={category.name} className="card">
             <h2 style={{ marginTop: 0 }}>{category.label}</h2>
-            <p style={{ color: '#4b5563', marginBottom: '1rem' }}>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
               {category.name === 'philosophy'
                 ? 'Philosophers, concepts, and ideas'
                 : 'Artists, movements, and artistic traditions'}
@@ -47,7 +47,7 @@ export default function Home() {
                   key={subcategory}
                   href={`/${category.name}/${subcategory}`}
                   style={{
-                    color: '#2563eb',
+                    color: 'var(--link-color)',
                     textDecoration: 'none',
                     padding: '0.25rem 0'
                   }}
@@ -68,19 +68,19 @@ export default function Home() {
           style={{ textDecoration: 'none' }}
         >
           <h3 style={{ marginTop: 0 }}>Tag Explorer 🏷️</h3>
-          <p style={{ color: '#4b5563' }}>
+          <p style={{ color: 'var(--text-secondary)' }}>
             Browse all topics and concepts by tags
           </p>
         </Link>
         <div className="card">
           <h3 style={{ marginTop: 0 }}>Wiki Links 🔗</h3>
-          <p style={{ color: '#4b5563' }}>
+          <p style={{ color: 'var(--text-secondary)' }}>
             Use [[concept]] syntax to link entries
           </p>
         </div>
         <div className="card">
           <h3 style={{ marginTop: 0 }}>Backlinks 🔄</h3>
-          <p style={{ color: '#4b5563' }}>
+          <p style={{ color: 'var(--text-secondary)' }}>
             See what entries reference each page
           </p>
         </div>
@@ -88,13 +88,13 @@ export default function Home() {
 
       <div className="card-highlight">
         <h3 style={{ marginTop: 0 }}>About This Wiki</h3>
-        <p style={{ color: '#1e3a8a', marginBottom: '1rem' }}>
+        <p style={{ color: 'var(--link-color)', marginBottom: '1rem' }}>
           This is a living document of curiosity and learning. Content is
           organized by topic with tags for easy discovery. Each entry includes
           key ideas, related concepts, and references for deeper exploration.
         </p>
         <h4>Wiki Features:</h4>
-        <ul style={{ color: '#1e3a8a' }}>
+        <ul style={{ color: 'var(--link-color)' }}>
           <li>✓ Topic-based organization (Philosophers, Artists, Concepts, Movements)</li>
           <li>✓ Tag system for cross-referencing content</li>
           <li>✓ Wiki-style [[concept]] links that auto-convert</li>

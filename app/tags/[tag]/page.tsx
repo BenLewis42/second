@@ -25,7 +25,7 @@ export default async function TagPage({ params }: Props) {
       </Link>
 
       <h1>#{decodedTag}</h1>
-      <p style={{ color: '#4b5563', marginBottom: '2rem' }}>
+      <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
         {files.length === 1
           ? '1 entry'
           : `${files.length} entries`} tagged with this concept
@@ -33,7 +33,7 @@ export default async function TagPage({ params }: Props) {
 
       <div>
         {files.length === 0 ? (
-          <p style={{ color: '#4b5563' }}>No entries found with this tag.</p>
+          <p style={{ color: 'var(--text-secondary)' }}>No entries found with this tag.</p>
         ) : (
           <div style={{ display: 'grid', gap: '1rem' }}>
             {files.map((file) => (
@@ -44,11 +44,11 @@ export default async function TagPage({ params }: Props) {
                 style={{ textDecoration: 'none' }}
               >
                 <div>
-                  <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#2563eb' }}>
+                  <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'var(--link-color)' }}>
                     {file.frontmatter.title}
                   </h2>
                   {file.frontmatter.excerpt && (
-                    <p style={{ color: '#4b5563', marginBottom: '0.75rem' }}>
+                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
                       {file.frontmatter.excerpt}
                     </p>
                   )}
@@ -59,7 +59,7 @@ export default async function TagPage({ params }: Props) {
                       </span>
                     ))}
                   </div>
-                  <span style={{ fontSize: '0.75rem', color: '#4b5563', marginTop: '0.5rem', display: 'block' }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', marginTop: '0.5rem', display: 'block' }}>
                     {file.frontmatter.category}
                   </span>
                 </div>

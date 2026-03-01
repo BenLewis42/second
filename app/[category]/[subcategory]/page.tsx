@@ -55,7 +55,7 @@ export default async function SubcategoryPage({ params }: Props) {
 
       <div style={{ display: 'grid', gap: '1rem' }}>
         {files.length === 0 ? (
-          <p style={{ color: '#4b5563' }}>No entries yet in this category.</p>
+          <p style={{ color: 'var(--text-secondary)' }}>No entries yet in this category.</p>
         ) : (
           files.map((file) => (
             <Link
@@ -68,7 +68,7 @@ export default async function SubcategoryPage({ params }: Props) {
                 {file.frontmatter.title}
               </h2>
               {file.frontmatter.excerpt && (
-                <p style={{ color: '#4b5563', marginBottom: '0.75rem' }}>
+                <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
                   {file.frontmatter.excerpt}
                 </p>
               )}
@@ -80,7 +80,7 @@ export default async function SubcategoryPage({ params }: Props) {
                     </span>
                   ))}
                 </div>
-                <span style={{ fontSize: '0.75rem', color: '#4b5563', flexShrink: 0 }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', flexShrink: 0 }}>
                   {new Date(file.frontmatter.date).toLocaleDateString()}
                 </span>
               </div>

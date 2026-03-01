@@ -6,7 +6,7 @@ date: "2026-02-28"
 excerpt: "Ancient Greek philosopher, founder of Platonism. Developed the Theory of Forms and explored justice, knowledge, and reality."
 ---
 
-## Key Ideas
+### Concepts
 
 ### Theory of Forms
 Reality exists in two realms:
@@ -34,10 +34,19 @@ Virtue arises from proper harmony of the soul's three parts:
 
 Justice is their proper balance.
 
+<br/>
+
+<br/>
+
 ### Mathematical Proportion
 Plato believed in the primacy of mathematical relationships and proportion as expressions of ideal Form.
 
-## Major Works
+
+---
+
+---
+
+### Major Works
 
 - **Republic** - His masterwork on justice, the ideal state, and the nature of reality
 - **Phaedo** - Death of Socrates, immortality of the soul
@@ -45,7 +54,12 @@ Plato believed in the primacy of mathematical relationships and proportion as ex
 - **Timaeus** - Creation of the universe and the role of [[mathematical-proportion]]
 - **Apology** - Socrates' defense at trial
 
-## Influence on Art
+
+---
+
+---
+
+### Influence on Art
 
 Plato was skeptical of art, viewing it as thrice removed from truth:
 - Truth → Forms (perfect reality)
@@ -58,7 +72,12 @@ Yet paradoxically, his ideals deeply influenced artistic thinking:
 - [[Neoclassical art]] explicitly draws on Platonic aesthetics
 - [[mathematical-proportion|Mathematical proportion]] became central to artistic practice
 
-## Philosophy & Aesthetics
+
+---
+
+---
+
+### Philosophy & Aesthetics
 
 Plato's theory of Forms fundamentally shaped how artists think about:
 - The relationship between appearance and reality
@@ -68,7 +87,12 @@ Plato's theory of Forms fundamentally shaped how artists think about:
 
 His skepticism of imitation paradoxically made him essential to understanding art's purpose.
 
-## Notable Quotes
+
+---
+
+---
+
+### Notable Quotes
 
 > "The prison-house is the world of sight, the light of the fire is the sun."
 
@@ -76,7 +100,12 @@ His skepticism of imitation paradoxically made him essential to understanding ar
 
 > "Everything that is beautiful owes its beauty to the Form of beauty."
 
-## Related Topics
+
+---
+
+---
+
+### Related Topics
 
 - **[[Aristotle]]** - His student, who disagreed fundamentally on Forms
 - **[[Socrates]]** - His teacher and philosophical inspiration

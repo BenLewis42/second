@@ -80,7 +80,7 @@ export default async function ContentPage({ params }: Props) {
           <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>
             {file.frontmatter.title}
           </h1>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', color: '#4b5563', marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
             <span style={{ fontSize: '0.875rem' }}>
               {new Date(file.frontmatter.date).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -106,7 +106,7 @@ export default async function ContentPage({ params }: Props) {
         <div
           style={{
             lineHeight: '1.75',
-            color: '#1f2937',
+            color: 'var(--text-primary)',
             marginBottom: '3rem',
           }}
           dangerouslySetInnerHTML={{ __html: processedContent }}
@@ -119,7 +119,7 @@ export default async function ContentPage({ params }: Props) {
       {relatedContent.length > 0 && (
         <div style={{ marginBottom: '3rem' }}>
           <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>Related Concepts</h3>
-          <p style={{ color: '#4b5563', marginBottom: '1rem' }}>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
             Entries sharing common tags with this topic:
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1rem' }}>
@@ -130,10 +130,10 @@ export default async function ContentPage({ params }: Props) {
                 className="card"
                 style={{ textDecoration: 'none' }}
               >
-                <h4 style={{ fontWeight: 'bold', color: '#2563eb', marginBottom: '0.25rem' }}>
+                <h4 style={{ fontWeight: 'bold', color: 'var(--link-color)', marginBottom: '0.25rem' }}>
                   {related.frontmatter.title}
                 </h4>
-                <p style={{ fontSize: '0.875rem', color: '#4b5563' }}>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
                   {related.frontmatter.excerpt || 'No description'}
                 </p>
               </Link>
@@ -146,7 +146,7 @@ export default async function ContentPage({ params }: Props) {
       {backlinks.length > 0 && (
         <div style={{ marginBottom: '3rem' }}>
           <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>Referenced By</h3>
-          <p style={{ color: '#4b5563', marginBottom: '1rem' }}>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
             Entries that link to this topic:
           </p>
           <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -158,7 +158,7 @@ export default async function ContentPage({ params }: Props) {
                 >
                   {backlink.frontmatter.title}
                 </Link>
-                <span style={{ color: '#999', fontSize: '0.875rem', marginLeft: '0.5rem' }}>
+                <span style={{ color: 'var(--text-tertiary)', fontSize: '0.875rem', marginLeft: '0.5rem' }}>
                   ({backlink.subcategory})
                 </span>
               </li>
@@ -167,9 +167,9 @@ export default async function ContentPage({ params }: Props) {
         </div>
       )}
 
-      <div style={{ marginTop: '2rem', padding: '1.5rem', backgroundColor: '#f3f4f6', borderRadius: '0.5rem' }}>
+      <div style={{ marginTop: '2rem', padding: '1.5rem', backgroundColor: 'var(--bg-tertiary)', borderRadius: '0.5rem' }}>
         <h4 style={{ fontWeight: '600', marginBottom: '0.5rem' }}>💡 Wiki Tips</h4>
-        <ul style={{ fontSize: '0.875rem', color: '#4b5563', listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <ul style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <li>• Click tags above to explore related concepts</li>
           <li>• Navigate through connections and backlinks</li>
           <li>• Use the tag explorer to discover topics</li>
