@@ -42,7 +42,7 @@ The Revaluation of All Values:
 
 Nietzsche's fundamental philosophical project. Western civilization is built on dying values, especially [[Christianity]]. New values must be created by the creative few. Art, not science, is the supreme expression of human value-creation. Philosophy is not abstract contemplation but a way of living.
 
-
+---
 
 ### Major Works
 
@@ -53,7 +53,7 @@ Nietzsche's fundamental philosophical project. Western civilization is built on 
 - **On the Genealogy of Morality** - Traces the psychological origins of moral systems
 - **Human, All Too Human** - Aphoristic exploration of human nature and culture
 
-
+---
 
 ### Influence on Art and Culture
 
@@ -64,7 +64,7 @@ Nietzsche profoundly shaped modern artistic and intellectual culture:
 - His critique of tradition liberated artists to reject conventional forms and create new aesthetics
 - [[Modernism]] and [[avant-garde]] movements embrace the Nietzschean spirit of radical revaluation
 
-
+---
 
 ### Critique and Controversy
 
@@ -75,7 +75,7 @@ Nietzsche profoundly shaped modern artistic and intellectual culture:
 
 Yet Nietzsche himself emphasized the need for creative, life-affirming power, not destructive force.
 
-
+---
 
 ### Notable Quotes
 
@@ -89,7 +89,7 @@ Yet Nietzsche himself emphasized the need for creative, life-affirming power, no
 
 > "In the depths of winter, I finally learned that within me there lay an invincible summer."
 
-
+---
 
 ### Related Topics
 
