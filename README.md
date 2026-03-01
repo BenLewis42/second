@@ -2,6 +2,12 @@
 
 A web-published personal knowledge base for collecting, organizing, and sharing interesting information on art and philosophy as an interconnected cultural wiki.
 
+## About This Project
+
+This wiki explores the interconnected world of art and philosophy by examining how ideas influence one another across time and disciplines. Rather than organizing knowledge in isolated categories, it emphasizes **influences, intellectual lineages, and cultural impact**—showing how a philosopher's ideas shaped an artist's work, how a movement in art challenged philosophical assumptions, or how a concept flows through multiple disciplines.
+
+The goal is to create a living map of cultural thinking, making visible the web of inspiration and response that connects thinkers and creators across history.
+
 ## Features
 
 - 📚 Topic-based organization (Philosophers, Artists, Concepts, Movements)
