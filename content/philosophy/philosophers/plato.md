@@ -6,7 +6,9 @@ date: "2026-02-28"
 excerpt: "Ancient Greek philosopher, founder of Platonism. Developed the Theory of Forms and explored justice, knowledge, and reality."
 ---
 
-### Concepts
+### Biography
+
+Plato (428-348 BCE) was an ancient Greek philosopher and founder of the [[Academy]] in Athens, making him one of the most influential thinkers in Western history. A student of [[Socrates]], he developed the Theory of Forms—the idea that non-physical abstract objects (Forms) represent the most fundamental reality. His influence extends far beyond philosophy into art, mathematics, and politics. [[Renaissance]] thinkers revived Platonic ideals, artists sought to capture the perfect Form behind appearances, and his mathematical emphasis shaped scientific thought for centuries.
 
 ### Theory of Forms
 Reality exists in two realms:

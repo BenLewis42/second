@@ -6,9 +6,9 @@ date: "2026-03-01"
 excerpt: "German philosopher who challenged conventional morality and explored the will to power, eternal recurrence, and the Übermensch."
 ---
 
----
+### Biography
 
-### Concepts
+Friedrich Nietzsche (1844-1900) was a German philosopher whose radical critique of morality and Western values profoundly shaped 20th-century thought. Influenced by [[Arthur Schopenhauer]] and [[Ancient Greece]], he rejected conventional philosophical traditions and sought to create new values beyond good and evil. His ideas became foundational to [[Existentialism]], deeply influencing artists, intellectuals, and movements ranging from [[modernism]] to psychology. Despite his anti-nationalist views, his work was unfortunately co-opted by fascist ideology—a distortion he would have forcefully opposed.
 
 Will to Power:
 
