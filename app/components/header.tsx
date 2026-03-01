@@ -9,7 +9,7 @@ export default function Header() {
       top: 0,
       zIndex: 40
     }}>
-      <nav style={{ maxWidth: '56rem', margin: '0 auto', padding: '1rem 1.5rem' }}>
+      <nav style={{ width: '100%', padding: '1rem 1.5rem' }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
