@@ -9,19 +9,19 @@ export default function Home() {
   const categories = getCategories();
 
   return (
-    <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
-      <div style={{ marginBottom: '3rem' }}>
+    <div className="page-wrapper">
+      <div className="page-section">
         <h1>Welcome to My Second Brain</h1>
-        <p style={{ fontSize: '1.125rem', color: 'var(--text-secondary)', maxWidth: '42rem' }}>
+        <p className="intro-text">
           A curated cultural wiki collecting interesting insights, observations, and
           knowledge about art and philosophy. Explore topics, ideas, and the
           interconnections between creative and philosophical thought.
         </p>
       </div>
 
-      <div className="card-highlight" style={{ marginBottom: '3rem' }}>
-        <h2 style={{ marginTop: 0 }}>🔍 Explore as a Wiki</h2>
-        <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
+      <div className="card-highlight page-section">
+        <h2 className="heading-reset">🔍 Explore as a Wiki</h2>
+        <p className="section-description">
           This wiki uses interconnected concepts, tags, and backlinks to help you navigate and discover relationships between ideas.
         </p>
         <Link
@@ -32,25 +32,21 @@ export default function Home() {
         </Link>
       </div>
 
-      <div className="grid grid-2" style={{ marginBottom: '3rem' }}>
+      <div className="grid grid-2 page-section">
         {categories.map((category) => (
           <div key={category.name} className="card">
-            <h2 style={{ marginTop: 0 }}>{category.label}</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
+            <h2 className="heading-reset">{category.label}</h2>
+            <p className="section-description">
               {category.name === 'philosophy'
                 ? 'Philosophers, concepts, and ideas'
                 : 'Artists, movements, and artistic traditions'}
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <div className="flex-col gap-small">
               {category.subcategories.map((subcategory) => (
                 <Link
                   key={subcategory}
                   href={`/${category.name}/${subcategory}`}
-                  style={{
-                    color: 'var(--link-color)',
-                    textDecoration: 'none',
-                    padding: '0.25rem 0'
-                  }}
+                  className="subcategory-link"
                 >
                   {subcategory.charAt(0).toUpperCase() +
                     subcategory.slice(1)}
@@ -61,40 +57,40 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', marginBottom: '3rem' }}>
+      <div className="grid-featured page-section">
         <Link
           href="/tags"
           className="card"
           style={{ textDecoration: 'none' }}
         >
-          <h3 style={{ marginTop: 0 }}>Tag Explorer 🏷️</h3>
-          <p style={{ color: 'var(--text-secondary)' }}>
+          <h3 className="heading-reset">Tag Explorer 🏷️</h3>
+          <p className="section-description">
             Browse all topics and concepts by tags
           </p>
         </Link>
         <div className="card">
-          <h3 style={{ marginTop: 0 }}>Wiki Links 🔗</h3>
-          <p style={{ color: 'var(--text-secondary)' }}>
+          <h3 className="heading-reset">Wiki Links 🔗</h3>
+          <p className="section-description">
             Use [[concept]] syntax to link entries
           </p>
         </div>
         <div className="card">
-          <h3 style={{ marginTop: 0 }}>Backlinks 🔄</h3>
-          <p style={{ color: 'var(--text-secondary)' }}>
+          <h3 className="heading-reset">Backlinks 🔄</h3>
+          <p className="section-description">
             See what entries reference each page
           </p>
         </div>
       </div>
 
       <div className="card-highlight">
-        <h3 style={{ marginTop: 0 }}>About This Wiki</h3>
-        <p style={{ color: 'var(--link-color)', marginBottom: '1rem' }}>
+        <h3 className="heading-reset">About This Wiki</h3>
+        <p className="text-link page-section">
           This is a living document of curiosity and learning. Content is
           organized by topic with tags for easy discovery. Each entry includes
           key ideas, related concepts, and references for deeper exploration.
         </p>
         <h4>Wiki Features:</h4>
-        <ul style={{ color: 'var(--link-color)' }}>
+        <ul className="wiki-features">
           <li>✓ Topic-based organization (Philosophers, Artists, Concepts, Movements)</li>
           <li>✓ Tag system for cross-referencing content</li>
           <li>✓ Wiki-style [[concept]] links that auto-convert</li>

@@ -34,7 +34,7 @@ export default async function SubcategoryPage({ params }: Props) {
 
   if (!category || !category.subcategories.includes(params.subcategory)) {
     return (
-      <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
+      <div className="page-wrapper">
         <h1>Content not found</h1>
       </div>
     );
@@ -43,7 +43,7 @@ export default async function SubcategoryPage({ params }: Props) {
   const files = await getContentFiles(params.category, params.subcategory);
 
   return (
-    <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
+    <div className="page-wrapper">
       <Link href={`/${params.category}`} className="back-link">
         ← Back to {category.label}
       </Link>
@@ -53,9 +53,9 @@ export default async function SubcategoryPage({ params }: Props) {
           params.subcategory.slice(1)}
       </h1>
 
-      <div style={{ display: 'grid', gap: '1rem' }}>
+      <div className="entries-grid">
         {files.length === 0 ? (
-          <p style={{ color: 'var(--text-secondary)' }}>No entries yet in this category.</p>
+          <p className="text-secondary">No entries yet in this category.</p>
         ) : (
           files.map((file) => (
             <Link
@@ -64,23 +64,23 @@ export default async function SubcategoryPage({ params }: Props) {
               className="card"
               style={{ textDecoration: 'none' }}
             >
-              <h2 style={{ marginTop: 0, fontSize: '1.25rem', marginBottom: '0.5rem' }}>
+              <h2 className="entry-title">
                 {file.frontmatter.title}
               </h2>
               {file.frontmatter.excerpt && (
-                <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+                <p className="entry-excerpt">
                   {file.frontmatter.excerpt}
                 </p>
               )}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
-                <div className="tag-container" style={{ margin: 0, flex: 1 }}>
+              <div className="entry-footer">
+                <div className="tag-container entry-tags">
                   {file.frontmatter.tags?.slice(0, 3).map((tag) => (
-                    <span key={tag} className="tag" style={{ margin: '0.125rem' }}>
+                    <span key={tag} className="tag">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', flexShrink: 0 }}>
+                <span className="entry-date">
                   {new Date(file.frontmatter.date).toLocaleDateString()}
                 </span>
               </div>

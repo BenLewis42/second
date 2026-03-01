@@ -2,35 +2,16 @@
 
 export default function Header() {
   return (
-    <header style={{
-      borderBottom: '1px solid var(--border-color)',
-      backgroundColor: 'var(--bg-primary)',
-      position: 'sticky',
-      top: 0,
-      zIndex: 40
-    }}>
-      <nav style={{ width: '100%', padding: '1rem 1.5rem' }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between'
-        }}>
-          <a href="/" style={{
-            fontSize: '1.5rem',
-            fontWeight: 'bold',
-            color: 'var(--text-primary)',
-            textDecoration: 'none'
-          }}>
+    <header className="header">
+      <nav className="header-nav">
+        <div className="header-container">
+          <a href="/" className="header-logo">
             🧠 Second Brain
           </a>
-          <div style={{ display: 'flex', gap: '2rem' }}>
+          <div className="header-links">
             <a
               href="/philosophy"
-              style={{
-                color: 'var(--text-primary)',
-                textDecoration: 'none',
-                transition: 'opacity 0.2s'
-              }}
+              className="nav-link"
               onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
               onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
             >
@@ -38,11 +19,7 @@ export default function Header() {
             </a>
             <a
               href="/art"
-              style={{
-                color: 'var(--text-primary)',
-                textDecoration: 'none',
-                transition: 'opacity 0.2s'
-              }}
+              className="nav-link"
               onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
               onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
             >
@@ -50,12 +27,7 @@ export default function Header() {
             </a>
             <a
               href="/tags"
-              style={{
-                color: 'var(--link-color)',
-                fontWeight: '500',
-                textDecoration: 'none',
-                transition: 'color 0.2s'
-              }}
+              className="nav-link-active"
               onMouseEnter={(e) => e.currentTarget.style.color = 'var(--link-color-hover)'}
               onMouseLeave={(e) => e.currentTarget.style.color = 'var(--link-color)'}
             >

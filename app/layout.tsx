@@ -22,9 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, padding: 0 }}>
+      <body className="layout-body">
         <Header />
-        <main style={{ minHeight: '100vh' }}>{children}</main>
+        <main className="layout-main">{children}</main>
         <Footer />
       </body>
     </html>

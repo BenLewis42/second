@@ -20,14 +20,14 @@ export default function CategoryPage({ params }: Props) {
 
   if (!category) {
     return (
-      <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
+      <div className="page-wrapper">
         <h1>Category not found</h1>
       </div>
     );
   }
 
   return (
-    <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
+    <div className="page-wrapper">
       <Link href="/" className="back-link">
         ← Back to Home
       </Link>
@@ -42,7 +42,7 @@ export default function CategoryPage({ params }: Props) {
             className="card"
             style={{ textDecoration: 'none' }}
           >
-            <h2 style={{ marginTop: 0, fontSize: '1.25rem' }}>
+            <h2 className="subcategory-heading">
               {subcategory.charAt(0).toUpperCase() +
                 subcategory.slice(1)}
             </h2>
