@@ -19,13 +19,13 @@ export default async function TagPage({ params }: Props) {
   const files = await getContentByTag(decodedTag);
 
   return (
-    <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
+    <div className="page-wrapper">
       <Link href="/tags" className="back-link">
         ← Back to All Tags
       </Link>
 
       <h1>#{decodedTag}</h1>
-      <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+      <p className="tags-intro">
         {files.length === 1
           ? '1 entry'
           : `${files.length} entries`} tagged with this concept
@@ -33,9 +33,9 @@ export default async function TagPage({ params }: Props) {
 
       <div>
         {files.length === 0 ? (
-          <p style={{ color: 'var(--text-secondary)' }}>No entries found with this tag.</p>
+          <p className="text-secondary">No entries found with this tag.</p>
         ) : (
-          <div style={{ display: 'grid', gap: '1rem' }}>
+          <div className="entries-grid">
             {files.map((file) => (
               <Link
                 key={file.slug}
@@ -44,22 +44,22 @@ export default async function TagPage({ params }: Props) {
                 style={{ textDecoration: 'none' }}
               >
                 <div>
-                  <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'var(--link-color)' }}>
+                  <h2 className="tag-entry-title">
                     {file.frontmatter.title}
                   </h2>
                   {file.frontmatter.excerpt && (
-                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+                    <p className="entry-excerpt">
                       {file.frontmatter.excerpt}
                     </p>
                   )}
-                  <div className="tag-container" style={{ margin: 0 }}>
+                  <div className="tag-container entry-inline-tags">
                     {file.frontmatter.tags?.map((tag) => (
-                      <span key={tag} className="tag" style={{ margin: '0.125rem' }}>
+                      <span key={tag} className="tag">
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', marginTop: '0.5rem', display: 'block' }}>
+                  <span className="tag-category">
                     {file.frontmatter.category}
                   </span>
                 </div>

@@ -172,7 +172,7 @@ export default async function ContentPage({ params }: Props) {
         </ul>
       </div>
 
-      <div style={{ marginTop: '2rem' }}>
+      <div className="final-nav">
         <Link
           href={`/${params.category}/${params.subcategory}`}
           className="back-link"

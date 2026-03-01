@@ -625,6 +625,62 @@ th {
   gap: 0.5rem;
 }
 
+.final-nav {
+  margin-top: 2rem;
+}
+
+/* Tags Page */
+.tags-intro {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.all-tags-section {
+  margin-bottom: 3rem;
+}
+
+.top-tags-list {
+  margin-top: 1.5rem;
+}
+
+.top-tag-item {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.top-tag-label {
+  font-weight: 500;
+  min-width: 12rem;
+}
+
+.top-tag-count {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  min-width: 3rem;
+  text-align: right;
+}
+
+/* Tag Entry */
+.tag-entry-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--link-color);
+}
+
+.entry-inline-tags {
+  margin: 0;
+}
+
+.tag-category {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin-top: 0.5rem;
+  display: block;
+}
+
 /* Utility Classes */
 .page-wrapper {
   max-width: 56rem;

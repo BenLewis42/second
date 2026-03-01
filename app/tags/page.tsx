@@ -24,19 +24,19 @@ export default async function TagsPage() {
     .map(([tag, count]) => ({ tag, count }));
 
   return (
-    <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '3rem 1.5rem' }}>
-      <Link href="/" style={{ display: 'inline-block', marginBottom: '1.5rem' }} className="back-link">
+    <div className="page-wrapper">
+      <Link href="/" className="back-link">
         ← Back to Home
       </Link>
 
       <h1>Explore by Tags</h1>
-      <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+      <p className="tags-intro">
         Navigate the cultural wiki by topics and concepts. Click any tag to see
         all related content.
       </p>
 
-      <div className="card-highlight" style={{ marginBottom: '2rem' }}>
-        <h2 style={{ marginTop: 0 }}>Wiki Statistics</h2>
+      <div className="card-highlight page-section">
+        <h2 className="heading-reset">Wiki Statistics</h2>
         <div className="stats-grid">
           <div className="stat-item">
             <div className="stat-number">{graph.nodes.length}</div>
@@ -59,7 +59,7 @@ export default async function TagsPage() {
         </div>
       </div>
 
-      <div style={{ marginBottom: '3rem' }}>
+      <div className="all-tags-section">
         <h2>All Tags</h2>
         <div className="tag-container">
           {sortedTags.map(({ tag, count }) => (
@@ -75,17 +75,17 @@ export default async function TagsPage() {
         </div>
       </div>
 
-      <hr style={{ margin: '3rem 0', borderColor: 'var(--border-color)' }} />
+      <hr className="section-divider" />
 
       <div className="card-highlight">
-        <h3 style={{ marginTop: 0 }}>Top Tags</h3>
-        <p style={{ color: 'var(--text-secondary)' }}>
+        <h3 className="heading-reset">Top Tags</h3>
+        <p className="section-description">
           Most frequently used concepts in the cultural wiki:
         </p>
-        <div style={{ marginTop: '1.5rem' }}>
+        <div className="top-tags-list">
           {sortedTags.slice(0, 10).map(({ tag, count }, i) => (
-            <div key={tag} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <span style={{ fontWeight: 500, minWidth: '12rem' }}>
+            <div key={tag} className="top-tag-item">
+              <span className="top-tag-label">
                 {i + 1}. {tag}
               </span>
               <div className="progress-bar">
@@ -96,7 +96,7 @@ export default async function TagsPage() {
                   }}
                 />
               </div>
-              <span style={{ fontSize: '0.875rem', color: 'var(--text-tertiary)', minWidth: '3rem', textAlign: 'right' }}>
+              <span className="top-tag-count">
                 {count}
               </span>
             </div>
