@@ -320,6 +320,7 @@ th {
   height: 100%;
   background: #3b82f6;
   border-radius: 9999px;
+  width: var(--fill-width, 0%);
 }
 
 /* Buttons & Links */

@@ -92,8 +92,8 @@ export default async function TagsPage() {
                 <div
                   className="progress-fill"
                   style={{
-                    width: `${(count / sortedTags[0].count) * 100}%`,
-                  }}
+                    '--fill-width': `${(count / sortedTags[0].count) * 100}%`,
+                  } as React.CSSProperties}
                 />
               </div>
               <span className="top-tag-count">
