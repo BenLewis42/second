@@ -6,48 +6,52 @@ date: "2026-03-01"
 excerpt: "German philosopher who challenged conventional morality and explored the will to power, eternal recurrence, and the Übermensch."
 ---
 
+---
+
 ### Concepts
 
 Will to Power:
 
 The fundamental driving force of all life and reality. All living things strive to increase their power and influence, not merely physical power, but creative, intellectual, and spiritual power. Morality itself is a manifestation of will to power, driving art, science, philosophy, and culture.
 
+<br/>
 
-
-Master-Morality vs Slave-Morality:
+<br/>
 
 Nietzsche critiqued the origin of Western values. Master Morality was created by the strong, valuing power, strength, nobility, and creativity. Slave Morality was created by the weak as a reaction against masters, valuing weakness as virtue (humility, compassion, equality). [[Christianity]] represents slave morality, inverting natural values. True values must be created beyond conventional good and evil.
 
+<br/>
 
-
-The Übermensch (Overman):
+<br/>
 
 The ideal human being who has transcended conventional morality and wisdom, creates their own values, embraces life fully and affirms [[eternal-recurrence]], represents human potential and excellence. Not a biological concept but a philosophical ideal.
 
+<br/>
 
-
-Eternal Recurrence:
+<br/>
 
 A thought experiment and affirmation of life. Imagine having to live your life exactly as it was, infinitely many times. Would you embrace this or reject it? To truly affirm life and say "yes" to existence is the highest achievement, testing whether you are living authentically.
 
+<br/>
 
-
-Perspectivism:
+<br/>
 
 There are no absolute objective truths. All knowledge comes from a [[perspective]] shaped by one's position, values, and drives. Different perspectives can be equally valid yet contradictory. Truth is not correspondence to reality but what serves life and power. Even science is a human [[perspective]], not absolute reality.
 
+<br/>
 
-
-Critique of Truth and Knowledge:
+<br/>
 
 The "will to truth" is itself a manifestation of will to power. Classical [[epistemology]] seeks certainty, but life requires risk and creativity. [[Metaphor]] and interpretation are more fundamental than literal truth. We create meaning through our interpretations, not discover it.
 
+<br/>
 
-
-The Revaluation of All Values:
+<br/>
 
 Nietzsche's fundamental philosophical project. Western civilization is built on dying values, especially [[Christianity]]. New values must be created by the creative few. Art, not science, is the supreme expression of human value-creation. Philosophy is not abstract contemplation but a way of living.
 
+
+---
 
 ---
 
@@ -62,7 +66,7 @@ Nietzsche's fundamental philosophical project. Western civilization is built on 
 
 
 ---
-
+---
 ### Influence on Art and Culture
 
 Nietzsche profoundly shaped modern artistic and intellectual culture:
@@ -72,6 +76,8 @@ Nietzsche profoundly shaped modern artistic and intellectual culture:
 - His critique of tradition liberated artists to reject conventional forms and create new aesthetics
 - [[Modernism]] and [[avant-garde]] movements embrace the Nietzschean spirit of radical revaluation
 
+
+---
 
 ---
 
@@ -87,6 +93,8 @@ Yet Nietzsche himself emphasized the need for creative, life-affirming power, no
 
 ---
 
+---
+
 ### Notable Quotes
 
 > "God is dead. God remains dead. And we have killed him. How shall we comfort ourselves, the murderers of all murderers?"
@@ -99,6 +107,8 @@ Yet Nietzsche himself emphasized the need for creative, life-affirming power, no
 
 > "In the depths of winter, I finally learned that within me there lay an invincible summer."
 
+
+---
 
 ---
 
