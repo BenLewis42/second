@@ -1,0 +1,14 @@
+---
+description: After significant changes, commit and push to GitHub
+alwaysApply: true
+---
+
+# Git Workflow
+
+After making **significant changes** to the project (new features, refactors, theming, content structure, or multiple file edits), **commit and push to GitHub**.
+
+- Use a clear commit message that describes what changed (e.g. "Improve theming and fonts", "Format Nietzsche page", "Add RSS feed").
+- Run: `git add .` (or add specific files), `git commit -m "message"`, then `git push`.
+- Skip for trivial single-line tweaks or when the user says not to commit.
+
+If the repo has no remote or push fails (auth, branch), report the outcome and do not block the user.

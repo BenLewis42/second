@@ -10,60 +10,35 @@ excerpt: "German philosopher who challenged conventional morality and explored t
 
 Friedrich Nietzsche (1844-1900) was a German philosopher whose radical critique of morality and Western values profoundly shaped 20th-century thought. Influenced by [[Arthur Schopenhauer]] and [[Ancient Greece]], he rejected conventional philosophical traditions and sought to create new values beyond good and evil. His ideas became foundational to [[Existentialism]], deeply influencing artists, intellectuals, and movements ranging from [[modernism]] to psychology. Despite his anti-nationalist views, his work was unfortunately co-opted by fascist ideology—a distortion he would have forcefully opposed.
 
-Will to Power:
+### Key Concepts
+
+#### Will to Power
 
 The fundamental driving force of all life and reality. All living things strive to increase their power and influence, not merely physical power, but creative, intellectual, and spiritual power. Morality itself is a manifestation of will to power, driving art, science, philosophy, and culture.
 
-<br/>
+#### Master-Morality vs Slave-Morality
 
-<br/>
+Nietzsche critiqued the origin of Western values. **Master Morality** was created by the strong, valuing power, strength, nobility, and creativity. **Slave Morality** was created by the weak as a reaction against masters, valuing weakness as virtue (humility, compassion, equality). [[Christianity]] represents slave morality, inverting natural values. True values must be created beyond conventional good and evil.
 
-Master-Morality vs Slave-Morality:
+#### The Übermensch (Overman)
 
-Nietzsche critiqued the origin of Western values. Master Morality was created by the strong, valuing power, strength, nobility, and creativity. Slave Morality was created by the weak as a reaction against masters, valuing weakness as virtue (humility, compassion, equality). [[Christianity]] represents slave morality, inverting natural values. True values must be created beyond conventional good and evil.
+The ideal human being who has transcended conventional morality and wisdom, creates their own values, embraces life fully and affirms [[eternal-recurrence]], and represents human potential and excellence. Not a biological concept but a philosophical ideal.
 
-<br/>
-
-<br/>
-
-The Übermensch (Overman):
-
-The ideal human being who has transcended conventional morality and wisdom, creates their own values, embraces life fully and affirms [[eternal-recurrence]], represents human potential and excellence. Not a biological concept but a philosophical ideal.
-
-<br/>
-
-<br/>
-
-Eternal Recurrence:
+#### Eternal Recurrence
 
 A thought experiment and affirmation of life. Imagine having to live your life exactly as it was, infinitely many times. Would you embrace this or reject it? To truly affirm life and say "yes" to existence is the highest achievement, testing whether you are living authentically.
 
-<br/>
-
-<br/>
-
-Perspectivism:
+#### Perspectivism
 
 There are no absolute objective truths. All knowledge comes from a [[perspective]] shaped by one's position, values, and drives. Different perspectives can be equally valid yet contradictory. Truth is not correspondence to reality but what serves life and power. Even science is a human [[perspective]], not absolute reality.
 
-<br/>
-
-<br/>
-
-Critique of Truth and Knowledge:
+#### Critique of Truth and Knowledge
 
 The "will to truth" is itself a manifestation of will to power. Classical [[epistemology]] seeks certainty, but life requires risk and creativity. [[Metaphor]] and interpretation are more fundamental than literal truth. We create meaning through our interpretations, not discover it.
 
-<br/>
-
-<br/>
-
-The Revaluation of All Values:
+#### The Revaluation of All Values
 
 Nietzsche's fundamental philosophical project. Western civilization is built on dying values, especially [[Christianity]]. New values must be created by the creative few. Art, not science, is the supreme expression of human value-creation. Philosophy is not abstract contemplation but a way of living.
-
-
----
 
 ---
 
@@ -76,9 +51,8 @@ Nietzsche's fundamental philosophical project. Western civilization is built on 
 - **On the Genealogy of Morality** - Traces the psychological origins of moral systems
 - **Human, All Too Human** - Aphoristic exploration of human nature and culture
 
+---
 
----
----
 ### Influence on Art and Culture
 
 Nietzsche profoundly shaped modern artistic and intellectual culture:
@@ -87,9 +61,6 @@ Nietzsche profoundly shaped modern artistic and intellectual culture:
 - The concept of the Übermensch became central to 20th-century artistic movements
 - His critique of tradition liberated artists to reject conventional forms and create new aesthetics
 - [[Modernism]] and [[avant-garde]] movements embrace the Nietzschean spirit of radical revaluation
-
-
----
 
 ---
 
@@ -101,9 +72,6 @@ Nietzsche profoundly shaped modern artistic and intellectual culture:
 - His ideas on power can be misinterpreted as justifying domination
 
 Yet Nietzsche himself emphasized the need for creative, life-affirming power, not destructive force.
-
-
----
 
 ---
 
@@ -118,9 +86,6 @@ Yet Nietzsche himself emphasized the need for creative, life-affirming power, no
 > "I am not a man, I am dynamite."
 
 > "In the depths of winter, I finally learned that within me there lay an invincible summer."
-
-
----
 
 ---
 

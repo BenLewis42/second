@@ -1,6 +1,21 @@
 # Theming Guide
 
-This guide explains how to customize colors and themes in your wiki.
+This guide explains how to customize colors, fonts, and themes in your wiki.
+
+## Fonts
+
+The wiki uses a serif pairing suited to long-form reading and a cultural/knowledge aesthetic:
+
+- **Headings:** [Fraunces](https://fonts.google.com/specimen/Fraunces) – variable serif with character, used for all headings and the logo.
+- **Body:** [Lora](https://fonts.google.com/specimen/Lora) – readable serif for article and UI text.
+
+Fonts are loaded from Google Fonts in [app/globals.css](app/globals.css). To change them, update the `@import` at the top of `globals.css` and the CSS variables:
+
+```css
+--font-heading: 'Fraunces', Georgia, serif;
+--font-body: 'Lora', Georgia, serif;
+--font-mono: 'ui-monospace', 'Cascadia Code', Menlo, monospace;
+```
 
 ## CSS Variables System
 
@@ -8,46 +23,45 @@ All colors in the wiki are controlled by CSS variables defined in [app/globals.c
 
 ### Light Mode Variables (default)
 
+Light mode uses warm stone neutrals (`#fafaf9`, `#1c1917`) for a softer look:
+
 ```css
 :root {
-  --bg-primary: #ffffff;           /* Main background */
-  --bg-secondary: #f9fafb;         /* Card/footer backgrounds */
-  --bg-tertiary: #f3f4f6;          /* Input/code block backgrounds */
-  --text-primary: #000000;         /* Main text, headings */
-  --text-secondary: #000000;       /* Secondary text */
-  --text-tertiary: #666666;        /* Faded text, meta info */
-  --border-color: #e5e7eb;         /* Borders, dividers */
-  --link-color: #2563eb;           /* Links */
-  --link-color-hover: #1d4ed8;     /* Link hover state */
-  --tag-bg: linear-gradient(...);  /* Tag background gradient */
-  --tag-border: #93c5fd;           /* Tag border */
-  --tag-text: #1e40af;             /* Tag text color */
-  --card-hover-bg: #eff6ff;        /* Card hover background */
-  --card-hover-border: #60a5fa;    /* Card hover border */
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'Lora', Georgia, serif;
+  --bg-primary: #fafaf9;           /* Warm off-white */
+  --bg-secondary: #f5f5f4;          /* Card/footer */
+  --bg-tertiary: #e7e5e4;           /* Code, inputs */
+  --text-primary: #1c1917;          /* Near black */
+  --text-secondary: #44403c;        /* Body secondary */
+  --text-tertiary: #78716c;         /* Meta, faded */
+  --border-color: #e7e5e4;          /* Borders */
+  --link-color: #2563eb;            /* Links */
+  --link-color-hover: #1d4ed8;     /* Link hover */
+  --accent-solid: #2563eb;         /* Progress, accents */
+  --quote-border: #3b82f6;          /* Blockquote left border */
+  --error-text / --error-border / --error-bg;  /* Broken wiki links */
+  --btn-secondary-bg: #57534e;      /* Secondary buttons */
+  /* + tag and card variables */
 }
 ```
 
 ### Dark Mode Variables
 
-When user's OS is set to dark mode, these variables override the light mode ones:
+When the user's OS is set to dark mode, stone-style dark variables are applied:
 
 ```css
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: #0a0a0a;         /* Very dark background */
-    --bg-secondary: #1a1a1a;       /* Slightly lighter background */
-    --bg-tertiary: #2a2a2a;        /* Even lighter background */
-    --text-primary: #ffffff;       /* White text */
-    --text-secondary: #ffffff;     /* White text (same as primary) */
-    --text-tertiary: #e0e0e0;      /* Light gray text */
-    --border-color: #3a3a3a;       /* Dark borders */
-    --link-color: #60a5fa;         /* Light blue links */
-    --link-color-hover: #93c5fd;   /* Lighter blue on hover */
-    --tag-bg: linear-gradient(...);/* Dark blue gradient */
-    --tag-border: #3b82f6;         /* Blue border */
-    --tag-text: #dbeafe;           /* Light text */
-    --card-hover-bg: #1a1a1a;      /* Dark card hover */
-    --card-hover-border: #60a5fa;  /* Blue border on hover */
+    --bg-primary: #0c0a09;          /* Warm black */
+    --bg-secondary: #1c1917;         /* Cards, footer */
+    --bg-tertiary: #292524;         /* Code, inputs */
+    --text-primary: #fafaf9;        /* Off-white */
+    --text-secondary: #e7e5e4;     /* Secondary */
+    --text-tertiary: #a8a29e;      /* Meta */
+    --quote-border: #60a5fa;       /* Blockquote */
+    --error-*: dark-mode red variants;
+    /* + same structure as light */
   }
 }
 ```
@@ -56,7 +70,7 @@ When user's OS is set to dark mode, these variables override the light mode ones
 
 ### Quick Color Changes
 
-Edit the variables in [app/globals.css](app/globals.css) lines 5-19 (light mode) and lines 22-38 (dark mode).
+Edit the variables in [app/globals.css](app/globals.css): the first `:root` block (light mode) and the `@media (prefers-color-scheme: dark)` block (dark mode).
 
 For example, to change the primary accent color from blue to purple:
 
@@ -112,20 +126,24 @@ In [app/globals.css](app/globals.css), use variables for all colors:
 
 | Variable | Light | Dark | Purpose |
 |----------|-------|------|---------|
-| `--bg-primary` | #ffffff | #0a0a0a | Main page background |
-| `--bg-secondary` | #f9fafb | #1a1a1a | Cards, footer backgrounds |
-| `--bg-tertiary` | #f3f4f6 | #2a2a2a | Input fields, code blocks |
-| `--text-primary` | #000000 | #ffffff | Main text, headings |
-| `--text-secondary` | #000000 | #ffffff | Secondary text (same as primary in both modes) |
-| `--text-tertiary` | #666666 | #e0e0e0 | Meta text, faded text |
-| `--border-color` | #e5e7eb | #3a3a3a | Borders, dividers, lines |
-| `--link-color` | #2563eb | #60a5fa | Links, blue accents |
-| `--link-color-hover` | #1d4ed8 | #93c5fd | Link hover state |
-| `--tag-bg` | Blue gradient | Dark blue gradient | Tag button background |
-| `--tag-border` | #93c5fd | #3b82f6 | Tag button border |
-| `--tag-text` | #1e40af | #dbeafe | Tag button text |
-| `--card-hover-bg` | #eff6ff | #1a1a1a | Card on hover |
-| `--card-hover-border` | #60a5fa | #60a5fa | Card border on hover |
+| `--font-heading` | Fraunces | (same) | Headings, logo |
+| `--font-body` | Lora | (same) | Body text |
+| `--font-mono` | ui-monospace… | (same) | Code |
+| `--bg-primary` | #fafaf9 | #0c0a09 | Main page background |
+| `--bg-secondary` | #f5f5f4 | #1c1917 | Cards, footer |
+| `--bg-tertiary` | #e7e5e4 | #292524 | Inputs, code blocks |
+| `--text-primary` | #1c1917 | #fafaf9 | Main text, headings |
+| `--text-secondary` | #44403c | #e7e5e4 | Secondary text |
+| `--text-tertiary` | #78716c | #a8a29e | Meta, faded text |
+| `--border-color` | #e7e5e4 | #292524 | Borders, dividers |
+| `--link-color` | #2563eb | #60a5fa | Links |
+| `--link-color-hover` | #1d4ed8 | #93c5fd | Link hover |
+| `--accent-solid` | #2563eb | #60a5fa | Progress bar, solid accents |
+| `--quote-border` | #3b82f6 | #60a5fa | Blockquote left border |
+| `--error-text` / `--error-bg` / `--error-border` | red variants | dark red | Broken wiki links |
+| `--btn-secondary-bg` | #57534e | #78716c | Secondary button |
+| `--tag-bg` / `--tag-border` / `--tag-text` | blue gradients | dark blue | Tags |
+| `--card-hover-bg` / `--card-hover-border` | blue tint | dark | Card hover |
 
 ## Common Patterns
 
@@ -224,7 +242,7 @@ Settings → Personalization → Colors → Dark
 
 **Colors don't change in dark mode:**
 - Check that the element uses `var(--color-name)` not hardcoded colors
-- Verify the variable exists in the dark mode block (lines 21-39 in globals.css)
+- Verify the variable exists in the `@media (prefers-color-scheme: dark)` block in globals.css
 - Force refresh the browser (Ctrl+Shift+R)
 
 **Some elements still have wrong colors:**
@@ -232,9 +250,9 @@ Settings → Personalization → Colors → Dark
 - Replace with appropriate `var(--*)` variable
 
 **Need a new color variable:**
-- Add it to both light mode (line 5-19) and dark mode (line 22-39) blocks
+- Add it to both the main `:root` block (light) and the `prefers-color-scheme: dark` block
 - Use consistent naming: `--purpose-modifier` (e.g., `--accent-bright`)
-- Document it in this file's Reference section
+- Document it in this file's Variable Reference table
 
 ## Future Theme Systems
 
