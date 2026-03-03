@@ -12,7 +12,7 @@ function formatTopic(t: SuggestedTopic): string {
   const more = t.referringSlugs.length > 5 ? ` (+${t.referringSlugs.length - 5} more)` : '';
   return [
     `  ${t.title} (${t.slug})`,
-    `    → ${t.category}/${t.subcategory}  [${t.referenceCount} refs]`,
+    `    -> ${t.category}/${t.subcategory}  [${t.referenceCount} refs]`,
     `    Referred by: ${refs}${more}`,
     `    Tags: ${t.suggestedTags.slice(0, 5).join(', ')}`,
   ].join('\n');

@@ -756,6 +756,10 @@ th {
   flex-direction: column;
 }
 
+.entries-grid .card {
+  text-decoration: none;
+}
+
 .flex-center {
   display: flex;
   align-items: center;

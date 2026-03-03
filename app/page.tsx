@@ -1,34 +1,72 @@
 import Link from 'next/link';
 import { getCategories } from '@/lib/content';
+import { getAllContent, getAllTags } from '@/lib/markdown';
+import { buildContentGraph } from '@/lib/graph';
 
 export const metadata = {
   title: 'Second Brain - Home',
 };
 
-export default function Home() {
+export default async function Home() {
   const categories = getCategories();
+  const [allContent, allTags, graph] = await Promise.all([
+    getAllContent(),
+    getAllTags(),
+    buildContentGraph(),
+  ]);
+
+  const subcategoryCounts = new Map<string, number>();
+  allContent.forEach((file) => {
+    const key = `${file.category}/${file.subcategory}`;
+    subcategoryCounts.set(key, (subcategoryCounts.get(key) || 0) + 1);
+  });
+
+  const recentEntries = [...allContent]
+    .filter((f) => Boolean(f.frontmatter?.date))
+    .sort(
+      (a, b) =>
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+    )
+    .slice(0, 6);
 
   return (
     <div className="page-wrapper">
       <div className="page-section">
-        <h1>Welcome to My Second Brain</h1>
+        <h1>Second Brain</h1>
         <p className="intro-text">
-          A curated cultural wiki collecting interesting insights, observations, and
-          knowledge about art and philosophy. Explore topics, ideas, and the
-          interconnections between creative and philosophical thought.
+          A small cultural wiki connecting art and philosophy through tags,
+          wiki-links, and references. Browse by category, explore by tags, and
+          follow connections between entries.
         </p>
       </div>
 
       <div className="card-highlight page-section">
-        <h2 className="heading-reset">🔍 Explore as a Wiki</h2>
-        <p className="section-description">
-          This wiki uses interconnected concepts, tags, and backlinks to help you navigate and discover relationships between ideas.
-        </p>
-        <Link
-          href="/tags"
-          className="btn"
-        >
-          Start Exploring by Tags →
+        <h2 className="heading-reset">Wiki Snapshot</h2>
+        <div className="stats-grid">
+          <div className="stat-item">
+            <div className="stat-number">{graph.nodes.length}</div>
+            <div className="stat-label">Entries</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-number">{allTags.length}</div>
+            <div className="stat-label">Tags</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-number">{graph.links.length}</div>
+            <div className="stat-label">Tag Connections</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-number">
+              {graph.nodes.length > 0
+                ? (graph.links.length / graph.nodes.length).toFixed(1)
+                : '0.0'}
+            </div>
+            <div className="stat-label">Avg Connections</div>
+          </div>
+        </div>
+        <Link href="/tags" className="btn">
+          Explore by Tags
         </Link>
       </div>
 
@@ -38,8 +76,8 @@ export default function Home() {
             <h2 className="heading-reset">{category.label}</h2>
             <p className="section-description">
               {category.name === 'philosophy'
-                ? 'Philosophers, concepts, and ideas'
-                : 'Artists, movements, and artistic traditions'}
+                ? 'Philosophers and concepts'
+                : 'Artists and movements'}
             </p>
             <div className="flex-col gap-small">
               {category.subcategories.map((subcategory) => (
@@ -49,7 +87,14 @@ export default function Home() {
                   className="subcategory-link"
                 >
                   {subcategory.charAt(0).toUpperCase() +
-                    subcategory.slice(1)}
+                    subcategory.slice(1)}{' '}
+                  <span className="text-tertiary">
+                    (
+                    {subcategoryCounts.get(
+                      `${category.name}/${subcategory}`
+                    ) || 0}
+                    )
+                  </span>
                 </Link>
               ))}
             </div>
@@ -57,47 +102,68 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="grid-featured page-section">
-        <Link
-          href="/tags"
-          className="card"
-          style={{ textDecoration: 'none' }}
-        >
-          <h3 className="heading-reset">Tag Explorer 🏷️</h3>
+      {recentEntries.length > 0 && (
+        <div className="page-section">
+          <h2>Recent Entries</h2>
           <p className="section-description">
-            Browse all topics and concepts by tags
+            Latest entries by their frontmatter date:
           </p>
-        </Link>
-        <div className="card">
-          <h3 className="heading-reset">Wiki Links 🔗</h3>
-          <p className="section-description">
-            Use [[concept]] syntax to link entries
-          </p>
+          <div className="entries-grid">
+            {recentEntries.map((file) => (
+              <Link
+                key={`${file.category}/${file.subcategory}/${file.slug}`}
+                href={`/${file.category}/${file.subcategory}/${file.slug}`}
+                className="card"
+              >
+                <div className="entry-footer">
+                  <div className="flex-col">
+                    <h3 className="entry-title heading-reset">
+                      {file.frontmatter.title}
+                    </h3>
+                    {file.frontmatter.excerpt && (
+                      <p className="entry-excerpt">
+                        {file.frontmatter.excerpt}
+                      </p>
+                    )}
+                    <div className="tag-container entry-inline-tags">
+                      {(file.frontmatter.tags || [])
+                        .slice(0, 5)
+                        .map((tag) => (
+                          <span key={tag} className="tag tag-small">
+                            {tag}
+                          </span>
+                        ))}
+                    </div>
+                    <span className="text-tertiary">
+                      {file.frontmatter.category}
+                    </span>
+                  </div>
+                  <span className="entry-date">
+                    {new Date(file.frontmatter.date).toLocaleDateString(
+                      'en-US',
+                      { year: 'numeric', month: 'short', day: 'numeric' }
+                    )}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-        <div className="card">
-          <h3 className="heading-reset">Backlinks 🔄</h3>
-          <p className="section-description">
-            See what entries reference each page
-          </p>
-        </div>
-      </div>
+      )}
 
       <div className="card-highlight">
-        <h3 className="heading-reset">About This Wiki</h3>
-        <p className="text-link page-section">
-          This is a living document of curiosity and learning. Content is
-          organized by topic with tags for easy discovery. Each entry includes
-          key ideas, related concepts, and references for deeper exploration.
+        <h3 className="heading-reset">How to Use This Wiki</h3>
+        <p className="section-description">
+          Entries connect in two main ways: tags (for discovery) and wiki-links
+          (for direct references). On any entry page you can also see “Referenced
+          By” backlinks and tag-based related entries.
         </p>
-        <h4>Wiki Features:</h4>
         <ul className="wiki-features">
-          <li>✓ Topic-based organization (Philosophers, Artists, Concepts, Movements)</li>
-          <li>✓ Tag system for cross-referencing content</li>
-          <li>✓ Wiki-style [[concept]] links that auto-convert</li>
-          <li>✓ Backlinks showing what entries reference each page</li>
-          <li>✓ Related content suggestions based on shared tags</li>
-          <li>✓ Tag explorer for navigation and discovery</li>
-          <li>✓ Connection graph visualization of concept relationships</li>
+          <li>✓ Browse by category and subcategory</li>
+          <li>✓ Explore concepts via tags</li>
+          <li>✓ Use wiki links: <code>[[Concept Name]]</code></li>
+          <li>✓ See “Referenced By” backlinks on entry pages</li>
+          <li>✓ See related entries based on shared tags</li>
         </ul>
       </div>
     </div>
