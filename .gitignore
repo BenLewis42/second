@@ -30,5 +30,12 @@ yarn-error.log*
 *.swo
 *~
 
+# AI / assistant (keep .cursor/rules for project rules)
+.cursor/
+!.cursor/rules/
+.aider*
+.continue/
+*.copilot*
+
 # OS
 Thumbs.db

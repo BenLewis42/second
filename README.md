@@ -109,7 +109,11 @@ The system maintains a graph of all connections to show:
 ├── lib/                        # Utility functions
 │   ├── markdown.ts            # Markdown parsing, wiki links, backlinks
 │   ├── content.ts             # Content organization
-│   └── graph.ts               # Connection graph building
+│   ├── graph.ts               # Connection graph building
+│   └── article-suggestions.ts # Connection-based article suggestions + draft generation
+├── scripts/                    # CLI tools (run with npm run)
+│   ├── suggest-articles.ts    # List suggested new articles from broken wiki links
+│   └── generate-article.ts    # Create a draft article from a slug
 ├── package.json
 ├── next.config.js             # Next.js configuration
 └── tsconfig.json              # TypeScript configuration
@@ -144,6 +148,25 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+## Generating New Articles from Connections
+
+The wiki can suggest new articles based on **broken wiki links** (links that point to pages that don't exist yet):
+
+1. **List suggestions** (sorted by how many articles reference each):
+   ```bash
+   npm run suggest-articles
+   ```
+
+2. **Create a draft** for any suggested slug (or a new topic):
+   ```bash
+   npm run generate-article -- <slug>
+   # Examples:
+   npm run generate-article -- existentialism
+   npm run generate-article -- "Eternal Recurrence"
+   ```
+
+   This creates a new markdown file in the right `content/...` folder with frontmatter and section stubs (Overview, Key Ideas, Connections, Sources). It will not overwrite existing files.
 
 ## Adding Content
 
