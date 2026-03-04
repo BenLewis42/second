@@ -10,7 +10,7 @@ The goal is to create a living map of cultural thinking, making visible the web 
 
 ## Features
 
-- 📚 Topic-based organization (Philosophers, Artists, Concepts, Movements)
+- 📚 Topic-based organization (People, Concepts, Movements)
 - 🏷️ **Tag system** for cross-referencing content
 - 🔗 **Wiki-style links** (`[[concept-name]]`) that auto-convert to internal links
 - 🔄 **Backlinks** showing which entries reference each page
@@ -81,20 +81,14 @@ The system maintains a graph of all connections to show:
 
 ```
 .
-├── content/                    # Your actual content files (for the web project)
-│   ├── philosophy/
-│   │   ├── philosophers/      # Individual philosopher entries
-│   │   └── concepts/          # Philosophical concepts
-│   └── art/
-│       ├── artists/           # Individual artist entries
-│       └── movements/         # Art movements
-├── Philosophy/                 # Philosophy raw text files (for manual collection)
-│   ├── Philosophers/
-│   └── Concepts/
-├── Art/                        # Art raw text files (for manual collection)
-│   ├── Artists/
-│   └── Movements/
-├── app/                        # Next.js app (pages and components)
+├── content/                    # Content used by the site (markdown + YAML frontmatter)
+│   ├── people/
+│   │   └── figures/           # Philosophers, artists, other figures (e.g. plato.md, leonardo-da-vinci.md)
+│   └── philosophy/
+│       └── concepts/          # Philosophical concepts (e.g. existentialism.md, renaissance.md)
+├── Philosophy/                # Raw philosophy notes (manual collection; not used by the app)
+├── Art/                       # Raw art notes (manual collection; not used by the app)
+├── app/                       # Next.js app (pages and components)
 │   ├── components/            # React components (Header, Footer)
 │   ├── tags/                  # Tag explorer pages
 │   ├── [category]/            # Dynamic category routes
@@ -106,16 +100,19 @@ The system maintains a graph of all connections to show:
 │   ├── layout.tsx             # Root layout
 │   ├── page.tsx               # Home page
 │   └── globals.css            # Global styles
-├── lib/                        # Utility functions
+├── lib/                       # Shared utilities
 │   ├── markdown.ts            # Markdown parsing, wiki links, backlinks
-│   ├── content.ts             # Content organization
+│   ├── content.ts             # Content organization, content root path
 │   ├── graph.ts               # Connection graph building
-│   └── article-suggestions.ts # Connection-based article suggestions + draft generation
-├── scripts/                    # CLI tools (run with npm run)
+│   └── article-suggestions.ts # Article suggestions from broken wiki links + draft generation
+├── scripts/                   # CLI tools (npm run <script>)
 │   ├── suggest-articles.ts    # List suggested new articles from broken wiki links
-│   └── generate-article.ts    # Create a draft article from a slug
+│   ├── generate-article.ts     # Create a draft article from a slug
+│   ├── extract-claims.ts      # Extract factual claims (and quotes) for verification
+│   └── apply-fact-check-prompt.ts  # Print prompt to apply fact-check results to an entry
+├── docs/                      # Documentation (e.g. FACT_CHECKING.md)
 ├── package.json
-├── next.config.js             # Next.js configuration
+├── next.config.js             # Next.js configuration (static export)
 └── tsconfig.json              # TypeScript configuration
 ```
 
@@ -168,15 +165,28 @@ The wiki can suggest new articles based on **broken wiki links** (links that poi
 
    This creates a new markdown file in the right `content/...` folder with frontmatter and section stubs (Overview, Key Ideas, Connections, Sources). It will not overwrite existing files.
 
+## Fact-checking
+
+Extract factual claims (and blockquotes) from an entry, then verify in Cursor and apply results. See [docs/FACT_CHECKING.md](docs/FACT_CHECKING.md) for the full workflow.
+
+```bash
+# Extract claims (JSON or pasteable prompt for Cursor)
+npm run extract-claims -- content/people/figures/plato.md
+npm run extract-claims -- --cursor content/philosophy/concepts/renaissance.md
+
+# After you have fact-check results, print the apply prompt for the same entry
+npm run apply-fact-check -- content/people/figures/plato.md
+```
+
 ## Adding Content
 
 ### Creating Entries
 
 Entries are Markdown files with YAML frontmatter. Create files in the appropriate directory:
 
-**Structure:** `content/[category]/[subcategory]/[filename].md`
+**Structure:** `content/[category]/[subcategory]/[filename].md` (e.g. `people/figures`, `philosophy/concepts`).
 
-**Example:** `content/philosophy/concepts/virtue-ethics.md`
+**Example:** `content/philosophy/concepts/virtue-ethics.md` or `content/people/figures/plato.md`
 
 ```markdown
 ---
@@ -215,7 +225,7 @@ The pursuit of excellence ([[Arete]]) in virtue ethics parallels the artist's pu
 ### Frontmatter Fields
 
 - **title** (required): Name of the entry
-- **category** (required): "Philosophers", "Concepts", "Artists", or "Movements"
+- **category** (required): `"People"` (figures), `"Concepts"`, or `"Movements"`
 - **tags** (required): Array of tags for categorization and connection
 - **date** (required): Publication date (YYYY-MM-DD format)
 - **excerpt** (optional): Brief summary shown in lists
@@ -286,7 +296,7 @@ People viewing "Renaissance" tag will see both art and philosophy entries. Those
 
 3. Build settings:
    - Branch: `main`
-   - Build command: `npm run build && npm run export`
+   - Build command: `npm run build`
    - Publish directory: `out`
 
 4. Deploy!
@@ -312,9 +322,13 @@ This creates an optimized build ready for deployment.
 ## Commands
 
 - `npm run dev` - Start development server
-- `npm run build` - Build for production
+- `npm run build` - Build for production (static export to `out/`)
 - `npm start` - Run production build locally
-- `npm run export` - Export as static HTML (for GitHub Pages)
+- `npm run export` - Same as build (static HTML for GitHub Pages / Netlify)
+- `npm run suggest-articles` - List suggested new articles from broken wiki links
+- `npm run generate-article -- <slug>` - Create a draft article from a slug
+- `npm run extract-claims -- [--cursor] <file.md>` - Extract claims for fact-checking; see [docs/FACT_CHECKING.md](docs/FACT_CHECKING.md)
+- `npm run apply-fact-check -- <file.md>` - Print prompt to apply fact-check results to an entry
 
 ## Customization
 

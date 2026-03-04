@@ -2,10 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
+import { contentDir } from './content';
 
 export interface Frontmatter {
   title: string;
-  category: 'Philosophers' | 'Concepts' | 'Artists' | 'Movements';
+  category: 'People' | 'Concepts' | 'Movements';
   tags: string[];
   date: string;
   excerpt?: string;
@@ -19,8 +20,6 @@ export interface ContentFile {
   category?: string;
   subcategory?: string;
 }
-
-const contentDir = path.join(process.cwd(), 'content');
 
 export async function getContentFiles(
   category: string,
@@ -75,7 +74,7 @@ export async function getContentFile(
 }
 
 export async function getAllTags(): Promise<string[]> {
-  const categories = ['philosophy', 'art'];
+  const categories = ['people', 'philosophy', 'art'];
   const allTags = new Set<string>();
 
   for (const category of categories) {
@@ -98,7 +97,7 @@ export async function getAllTags(): Promise<string[]> {
 }
 
 export async function getContentByTag(tag: string): Promise<ContentFile[]> {
-  const categories = ['philosophy', 'art'];
+  const categories = ['people', 'philosophy', 'art'];
   const results: ContentFile[] = [];
 
   for (const category of categories) {
@@ -157,7 +156,7 @@ export async function getBacklinks(
   targetSubcategory: string,
   targetSlug: string
 ): Promise<ContentFile[]> {
-  const categories = ['philosophy', 'art'];
+  const categories = ['people', 'philosophy', 'art'];
   const backlinks: ContentFile[] = [];
   const targetTitle = targetSlug
     .replace(/-/g, ' ')
@@ -217,7 +216,7 @@ export async function getBacklinks(
 export async function getAllContent(): Promise<
   Array<ContentFile & { category: string; subcategory: string }>
 > {
-  const categories = ['philosophy', 'art'];
+  const categories = ['people', 'philosophy', 'art'];
   const allContent: Array<ContentFile & { category: string; subcategory: string }> = [];
 
   for (const category of categories) {
@@ -238,6 +237,18 @@ export async function getAllContent(): Promise<
   }
 
   return allContent;
+}
+
+/** Return category/subcategory for a content slug, or null if no page exists. */
+export async function getContentPathBySlug(
+  slug: string
+): Promise<{ category: string; subcategory: string } | null> {
+  const all = await getAllContent();
+  const normalized = slug.toLowerCase().trim().replace(/\s+/g, '-');
+  const found = all.find(
+    (f) => f.slug === normalized || f.slug === slug
+  );
+  return found ? { category: found.category, subcategory: found.subcategory } : null;
 }
 
 // Get related content based on shared tags

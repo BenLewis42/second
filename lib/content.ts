@@ -7,7 +7,8 @@ export interface ContentCategory {
   subcategories: string[];
 }
 
-const contentDir = path.join(process.cwd(), 'content');
+/** Canonical content root; used by markdown, article-suggestions, and content helpers. */
+export const contentDir = path.join(process.cwd(), 'content');
 
 export function getCategories(): ContentCategory[] {
   const categories: ContentCategory[] = [];

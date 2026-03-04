@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { contentDir } from './content';
 import { getAllContent } from './markdown';
 import type { ContentFile } from './markdown';
 
 const WIKI_LINK_REGEX = /\[\[([^\]]+)\]\]/g;
-const contentDir = path.join(process.cwd(), 'content');
 
 export interface SuggestedTopic {
   /** Display title (from first reference, or slug title-cased) */
@@ -103,24 +103,20 @@ function inferCategory(
   referringSlugs: SuggestedTopic['referringSlugs'],
   slug: string
 ): { category: string; subcategory: string } {
-  const philosophyCount = referringSlugs.filter((r) => r.category === 'philosophy').length;
-  const artCount = referringSlugs.filter((r) => r.category === 'art').length;
-  const category = artCount > philosophyCount ? 'art' : 'philosophy';
-
   const subcats = referringSlugs.map((r) => r.subcategory);
   const isPhilosopher = /^(plato|aristotle|nietzsche|kant|hegel|socrates|descartes|wittgenstein|schopenhauer|wagner)$/i.test(slug);
   const isArtist = /^(leonardo|michelangelo|picasso|monet|van-gogh|rembrandt)$/i.test(slug);
+  if (isPhilosopher || isArtist) return { category: 'people', subcategory: 'figures' };
+
+  const philosophyCount = referringSlugs.filter((r) => r.category === 'philosophy').length;
+  const artCount = referringSlugs.filter((r) => r.category === 'art').length;
+  const category = artCount > philosophyCount ? 'art' : 'philosophy';
   if (category === 'philosophy') {
-    if (isPhilosopher) return { category: 'philosophy', subcategory: 'philosophers' };
     if (subcats.includes('concepts')) return { category: 'philosophy', subcategory: 'concepts' };
     return { category: 'philosophy', subcategory: 'concepts' };
   }
-  if (category === 'art') {
-    if (isArtist) return { category: 'art', subcategory: 'artists' };
-    if (subcats.includes('movements')) return { category: 'art', subcategory: 'movements' };
-    return { category: 'art', subcategory: 'movements' };
-  }
-  return { category: 'philosophy', subcategory: 'concepts' };
+  if (subcats.includes('movements')) return { category: 'art', subcategory: 'movements' };
+  return { category: 'art', subcategory: 'movements' };
 }
 
 /**
@@ -188,13 +184,11 @@ export async function getSuggestedTopicsFromConnections(): Promise<SuggestedTopi
 export function generateDraftOutline(topic: SuggestedTopic): string {
   const date = new Date().toISOString().slice(0, 10);
   const categoryLabel =
-    topic.subcategory === 'philosophers'
-      ? 'Philosophers'
+    topic.subcategory === 'figures'
+      ? 'People'
       : topic.subcategory === 'concepts'
         ? 'Concepts'
-        : topic.subcategory === 'artists'
-          ? 'Artists'
-          : 'Movements';
+        : 'Movements';
 
   const tags = topic.suggestedTags.length
     ? topic.suggestedTags.slice(0, 6)

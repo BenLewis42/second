@@ -1,7 +1,7 @@
 ---
 title: "Leonardo da Vinci"
-category: "Artists"
-tags: ["renaissance", "italian-artist", "observation", "sfumato", "anatomy", "scientific-method", "mathematical-proportion", "engineering"]
+category: "People"
+tags: ["artist", "renaissance", "italian-artist", "observation", "sfumato", "anatomy", "scientific-method", "mathematical-proportion", "engineering"]
 date: "2026-02-28"
 excerpt: "Renaissance polymath and artist (1452-1519). Master of observation and the integration of art with science."
 ---
@@ -11,9 +11,6 @@ excerpt: "Renaissance polymath and artist (1452-1519). Master of observation and
 Leonardo da Vinci represents the ideal Renaissance man - an artist, scientist, engineer, and philosopher of extraordinary breadth. His insatiable curiosity and commitment to empirical observation changed how we think about both art and knowledge.
 
 
----
-
----
 
 ### Key Works
 
@@ -30,9 +27,6 @@ Leonardo da Vinci represents the ideal Renaissance man - an artist, scientist, e
 - Natural observations (water flow, plant growth)
 
 
----
-
----
 
 ### Major Insights
 
@@ -48,10 +42,6 @@ Art and science were not separate—understanding the mechanics of the world was
 
 This approach parallels [[Aristotle's empiricism]] and the broader [[scientific-method]] that emerged during the [[Renaissance]].
 
-<br/>
-
-<br/>
-
 ### Drawing as Thinking
 Leonardo treated drawing not as decoration but as investigation:
 - Sketches were research tools, not finished works
@@ -60,9 +50,7 @@ Leonardo treated drawing not as decoration but as investigation:
 - Visual thinking was as important as verbal/mathematical reasoning
 
 This method anticipates modern [[phenomenology]] and the role of perception in understanding.
-<br/>
 
-<br/>
 ### Perfection Through Study
 He believed complete understanding of a subject was necessary for authentic representation:
 - You cannot paint a horse without understanding its musculature
@@ -72,9 +60,6 @@ He believed complete understanding of a subject was necessary for authentic repr
 This connects to [[Plato's]] ideal of [[proportions]] and [[mathematical-proportion]] as foundational to beauty.
 
 
----
-
----
 
 ### Philosophical Approach
 
@@ -86,9 +71,6 @@ This connects to [[Plato's]] ideal of [[proportions]] and [[mathematical-proport
 Leonardo embodied the ideals of [[Renaissance Humanism]]—the integration of art, science, and human potential.
 
 
----
-
----
 
 ### Artistic Techniques
 
@@ -99,9 +81,6 @@ Leonardo embodied the ideals of [[Renaissance Humanism]]—the integration of ar
 These techniques allow the artist to express philosophical ideas about light, perception, and the nature of seeing.
 
 
----
-
----
 
 ### Legacy in Art and Science
 
@@ -113,9 +92,6 @@ These techniques allow the artist to express philosophical ideas about light, pe
 - Demonstrated that [[observation]] and [[mathematical-proportion]] can be expressions of deep truth
 
 
----
-
----
 
 ### Notable Quotes
 
@@ -128,9 +104,6 @@ These techniques allow the artist to express philosophical ideas about light, pe
 > "I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do."
 
 
----
-
----
 
 ### Related Topics
 

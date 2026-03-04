@@ -75,9 +75,11 @@ export default async function Home() {
           <div key={category.name} className="card">
             <h2 className="heading-reset">{category.label}</h2>
             <p className="section-description">
-              {category.name === 'philosophy'
-                ? 'Philosophers and concepts'
-                : 'Artists and movements'}
+              {category.name === 'people'
+                ? 'Philosophers, artists, and figures'
+                : category.name === 'philosophy'
+                  ? 'Concepts'
+                  : 'Movements'}
             </p>
             <div className="flex-col gap-small">
               {category.subcategories.map((subcategory) => (

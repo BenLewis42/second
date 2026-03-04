@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import { getAllTags, getContentByTag } from '@/lib/markdown';
+import { redirect } from 'next/navigation';
+import { getAllTags, getContentByTag, getContentPathBySlug } from '@/lib/markdown';
 
 interface Props {
-  params: {
-    tag: string;
-  };
+  params: { tag: string };
 }
 
 export async function generateStaticParams() {
@@ -15,8 +14,14 @@ export async function generateStaticParams() {
 }
 
 export default async function TagPage({ params }: Props) {
-  const decodedTag = decodeURIComponent(params.tag).replace(/-/g, ' ');
-  const files = await getContentByTag(decodedTag);
+  const tagSlug = decodeURIComponent(params.tag).toLowerCase().replace(/\s+/g, '-');
+  const contentPath = await getContentPathBySlug(tagSlug);
+  if (contentPath) {
+    redirect(`/${contentPath.category}/${contentPath.subcategory}/${tagSlug}`);
+  }
+
+  const files = await getContentByTag(params.tag);
+  const displayTag = tagSlug.replace(/-/g, ' ');
 
   return (
     <div className="page-wrapper">
@@ -24,50 +29,35 @@ export default async function TagPage({ params }: Props) {
         ← Back to All Tags
       </Link>
 
-      <h1>#{decodedTag}</h1>
+      <h1>#{displayTag}</h1>
       <p className="tags-intro">
-        {files.length === 1
-          ? '1 entry'
-          : `${files.length} entries`} tagged with this concept
+        {files.length === 0
+          ? 'No entries with this tag yet.'
+          : `${files.length} ${files.length === 1 ? 'entry' : 'entries'} tagged with this concept:`}
       </p>
 
-      <div>
-        {files.length === 0 ? (
-          <p className="text-secondary">No entries found with this tag.</p>
-        ) : (
-          <div className="entries-grid">
-            {files.map((file) => (
-              <Link
-                key={file.slug}
-                href={`/${file.category}/${file.subcategory}/${file.slug}`}
-                className="card"
-                style={{ textDecoration: 'none' }}
-              >
-                <div>
-                  <h2 className="tag-entry-title">
-                    {file.frontmatter.title}
-                  </h2>
-                  {file.frontmatter.excerpt && (
-                    <p className="entry-excerpt">
-                      {file.frontmatter.excerpt}
-                    </p>
-                  )}
-                  <div className="tag-container entry-inline-tags">
-                    {file.frontmatter.tags?.map((tag) => (
-                      <span key={tag} className="tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="tag-category">
-                    {file.frontmatter.category}
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
+      {files.length > 0 && (
+        <div className="entries-grid">
+          {files.map((file) => (
+            <Link
+              key={file.slug}
+              href={`/${file.category}/${file.subcategory}/${file.slug}`}
+              className="card"
+            >
+              <h2 className="tag-entry-title">{file.frontmatter.title}</h2>
+              {file.frontmatter.excerpt && (
+                <p className="entry-excerpt">{file.frontmatter.excerpt}</p>
+              )}
+              <div className="tag-container entry-inline-tags">
+                {file.frontmatter.tags?.map((t) => (
+                  <span key={t} className="tag">{t}</span>
+                ))}
+              </div>
+              <span className="tag-category">{file.frontmatter.category}</span>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

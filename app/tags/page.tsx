@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getAllTags, getContentByTag } from '@/lib/markdown';
+import { getAllTags, getAllContent } from '@/lib/markdown';
 import { buildContentGraph } from '@/lib/graph';
 
 export const metadata = {
@@ -7,10 +7,15 @@ export const metadata = {
 };
 
 export default async function TagsPage() {
-  const tags = await getAllTags();
-  const graph = await buildContentGraph();
+  const [tags, graph, allContent] = await Promise.all([
+    getAllTags(),
+    buildContentGraph(),
+    getAllContent(),
+  ]);
 
-  // Count tag frequencies
+  const slugToPath = new Map<string, { category: string; subcategory: string }>();
+  allContent.forEach((f) => slugToPath.set(f.slug, { category: f.category, subcategory: f.subcategory }));
+
   const tagFrequency = new Map<string, number>();
   graph.nodes.forEach((node) => {
     node.tags.forEach((tag) => {
@@ -18,10 +23,14 @@ export default async function TagsPage() {
     });
   });
 
-  // Sort tags by frequency
   const sortedTags = Array.from(tagFrequency.entries())
     .sort((a, b) => b[1] - a[1])
     .map(([tag, count]) => ({ tag, count }));
+
+  function tagHref(tag: string): string {
+    const path = slugToPath.get(tag);
+    return path ? `/${path.category}/${path.subcategory}/${tag}` : `/tags/${tag}`;
+  }
 
   return (
     <div className="page-wrapper">
@@ -31,8 +40,7 @@ export default async function TagsPage() {
 
       <h1>Explore by Tags</h1>
       <p className="tags-intro">
-        Navigate the cultural wiki by topics and concepts. Click any tag to see
-        all related content.
+        Click a tag to open that page. Tags with a dedicated entry go straight to it; others list entries that use the tag.
       </p>
 
       <div className="card-highlight page-section">
@@ -52,7 +60,7 @@ export default async function TagsPage() {
           </div>
           <div className="stat-item">
             <div className="stat-number">
-              {(graph.links.length / graph.nodes.length).toFixed(1)}
+              {graph.nodes.length > 0 ? (graph.links.length / graph.nodes.length).toFixed(1) : '0.0'}
             </div>
             <div className="stat-label">Avg Connections</div>
           </div>
@@ -63,11 +71,7 @@ export default async function TagsPage() {
         <h2>All Tags</h2>
         <div className="tag-container">
           {sortedTags.map(({ tag, count }) => (
-            <Link
-              key={tag}
-              href={`/tags/${tag}`}
-              className="tag"
-            >
+            <Link key={tag} href={tagHref(tag)} className="tag">
               <span>{tag}</span>
               <span className="tag-count">({count})</span>
             </Link>
@@ -80,25 +84,21 @@ export default async function TagsPage() {
       <div className="card-highlight">
         <h3 className="heading-reset">Top Tags</h3>
         <p className="section-description">
-          Most frequently used concepts in the cultural wiki:
+          Most used tags; click to open the page or see entries.
         </p>
         <div className="top-tags-list">
           {sortedTags.slice(0, 10).map(({ tag, count }, i) => (
             <div key={tag} className="top-tag-item">
               <span className="top-tag-label">
-                {i + 1}. {tag}
+                {i + 1}. <Link href={tagHref(tag)} className="subcategory-link">{tag}</Link>
               </span>
               <div className="progress-bar">
                 <div
                   className="progress-fill"
-                  style={{
-                    '--fill-width': `${(count / sortedTags[0].count) * 100}%`,
-                  } as React.CSSProperties}
+                  style={{ '--fill-width': `${(count / sortedTags[0].count) * 100}%` } as React.CSSProperties}
                 />
               </div>
-              <span className="top-tag-count">
-                {count}
-              </span>
+              <span className="top-tag-count">{count}</span>
             </div>
           ))}
         </div>

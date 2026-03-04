@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next build && next export",
+    "export": "next build",
     "deploy": "npm run export && git add out -f && git commit -m 'Deploy to GitHub Pages' && git push",
     "suggest-articles": "tsx scripts/suggest-articles.ts",
-    "generate-article": "tsx scripts/generate-article.ts"
+    "generate-article": "tsx scripts/generate-article.ts",
+    "extract-claims": "tsx scripts/extract-claims.ts",
+    "apply-fact-check": "tsx scripts/apply-fact-check-prompt.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

@@ -1,7 +1,7 @@
 ---
 title: "Friedrich Nietzsche"
-category: "Philosophers"
-tags: ["german-philosophy", "19th-century", "existentialism", "metaphysics", "ethics", "power", "perspectivism"]
+category: "People"
+tags: ["philosopher", "german-philosophy", "19th-century", "existentialism", "metaphysics", "ethics", "power", "perspectivism"]
 date: "2026-03-01"
 excerpt: "German philosopher who challenged conventional morality and explored the will to power, eternal recurrence, and the Übermensch."
 ---
@@ -14,7 +14,7 @@ Friedrich Nietzsche (1844-1900) was a German philosopher whose radical critique 
 
 #### Will to Power
 
-The fundamental driving force of all life and reality. All living things strive to increase their power and influence, not merely physical power, but creative, intellectual, and spiritual power. Morality itself is a manifestation of will to power, driving art, science, philosophy, and culture.
+The fundamental driving force of all life and reality. All living things strive to increase their power and influence, not merely physical power, but creative, intellectual, and spiritual power. Nietzsche connects morality to will to power, though the relationship is complex—will to power is a broader metaphysical and psychological concept, and scholars caution against reducing morality, art, and science to a single "driving" mechanism.
 
 #### Master-Morality vs Slave-Morality
 
@@ -22,7 +22,7 @@ Nietzsche critiqued the origin of Western values. **Master Morality** was create
 
 #### The Übermensch (Overman)
 
-The ideal human being who has transcended conventional morality and wisdom, creates their own values, embraces life fully and affirms [[eternal-recurrence]], and represents human potential and excellence. Not a biological concept but a philosophical ideal.
+The ideal human being who has transcended conventional morality and wisdom, creates their own values, and represents human potential and excellence. Nietzsche does not always link the Übermensch and eternal recurrence explicitly in a single formulation, but the pairing—embracing life fully and affirming [[eternal-recurrence]]—is an interpretively standard synthesis. Not a biological concept but a philosophical ideal.
 
 #### Eternal Recurrence
 
@@ -30,7 +30,7 @@ A thought experiment and affirmation of life. Imagine having to live your life e
 
 #### Perspectivism
 
-There are no absolute objective truths. All knowledge comes from a [[perspective]] shaped by one's position, values, and drives. Different perspectives can be equally valid yet contradictory. Truth is not correspondence to reality but what serves life and power. Even science is a human [[perspective]], not absolute reality.
+There are no absolute objective truths; there is no "view from nowhere." All knowledge comes from a [[perspective]] shaped by one's position, values, and drives. Different perspectives can be equally valid yet contradictory. Nietzsche questions the value of the will to truth itself and does not simply reduce truth to utility for power—his perspectivism is subtler than a crude instrumentalist reading. Even science is a human [[perspective]], not absolute reality.
 
 #### Critique of Truth and Knowledge
 
@@ -38,7 +38,7 @@ The "will to truth" is itself a manifestation of will to power. Classical [[epis
 
 #### The Revaluation of All Values
 
-Nietzsche's fundamental philosophical project. Western civilization is built on dying values, especially [[Christianity]]. New values must be created by the creative few. Art, not science, is the supreme expression of human value-creation. Philosophy is not abstract contemplation but a way of living.
+Nietzsche's fundamental philosophical project. Western civilization is built on dying values, especially [[Christianity]]. New values must be created by the creative few. In his early work (e.g. *The Birth of Tragedy*) art held a supreme role over Socratic rationalism; his mature view is more ambivalent. Philosophy is not abstract contemplation but a way of living.
 
 ---
 
@@ -81,11 +81,9 @@ Yet Nietzsche himself emphasized the need for creative, life-affirming power, no
 
 > "One must have chaos within oneself to give birth to a dancing star."
 
-> "He who has a why to live can bear almost any how."
+> "If we have our own why of life, we shall get along with almost any how." — *Twilight of the Idols*, "Maxims and Arrows" §12. (The familiar formulation "He who has a why to live can bear almost any how" was popularized by Viktor Frankl in *Man's Search for Meaning* and is often misattributed to Nietzsche.)
 
 > "I am not a man, I am dynamite."
-
-> "In the depths of winter, I finally learned that within me there lay an invincible summer."
 
 ---
 

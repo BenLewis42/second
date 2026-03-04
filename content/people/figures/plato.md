@@ -1,7 +1,7 @@
 ---
 title: "Plato"
-category: "Philosophers"
-tags: ["ancient-greece", "idealism", "metaphysics", "epistemology", "forms", "beauty", "mathematical-proportion"]
+category: "People"
+tags: ["philosopher", "ancient-greece", "idealism", "metaphysics", "epistemology", "forms", "beauty", "mathematical-proportion"]
 date: "2026-02-28"
 excerpt: "Ancient Greek philosopher, founder of Platonism. Developed the Theory of Forms and explored justice, knowledge, and reality."
 ---
@@ -36,15 +36,11 @@ Virtue arises from proper harmony of the soul's three parts:
 
 Justice is their proper balance.
 
-<br/>
 
-<br/>
 
 ### Mathematical Proportion
 Plato believed in the primacy of mathematical relationships and proportion as expressions of ideal Form.
 
-
----
 
 ---
 
@@ -56,8 +52,6 @@ Plato believed in the primacy of mathematical relationships and proportion as ex
 - **Timaeus** - Creation of the universe and the role of [[mathematical-proportion]]
 - **Apology** - Socrates' defense at trial
 
-
----
 
 ---
 
@@ -77,8 +71,6 @@ Yet paradoxically, his ideals deeply influenced artistic thinking:
 
 ---
 
----
-
 ### Philosophy & Aesthetics
 
 Plato's theory of Forms fundamentally shaped how artists think about:
@@ -92,8 +84,6 @@ His skepticism of imitation paradoxically made him essential to understanding ar
 
 ---
 
----
-
 ### Notable Quotes
 
 > "The prison-house is the world of sight, the light of the fire is the sun."
@@ -102,8 +92,6 @@ His skepticism of imitation paradoxically made him essential to understanding ar
 
 > "Everything that is beautiful owes its beauty to the Form of beauty."
 
-
----
 
 ---
 

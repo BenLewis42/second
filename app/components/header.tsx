@@ -10,6 +10,14 @@ export default function Header() {
           </a>
           <div className="header-links">
             <a
+              href="/people"
+              className="nav-link"
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            >
+              People
+            </a>
+            <a
               href="/philosophy"
               className="nav-link"
               onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
