@@ -21,11 +21,33 @@ Do the following in order:
 1. **Make these updates** – Apply every suggested change from the fact-check (fix or remove INACCURATE items; note UNCERTAIN for follow-up). For any "Correct: ..." use that text in the entry.
 2. **Set \`verified: true\`** in the YAML frontmatter so automation knows this page has been fact-checked.
 3. **Make any further additions** – If you deem it necessary, add or expand content (e.g. missing context, caveats). Keep the same tone and structure. Do not invent or add sources, URLs, or citations; only the user may add verified references.
-4. **Provide new facts for checking** – After the revised content, add a section "## New facts to check" with a numbered list of any new factual claims or quoted passages that should be verified (from your edits or additions). If there are none, write "None."
+4. **Provide new facts for checking** – In the second part of your reply (see exact format below), list any new factual claims that should be verified, or "None."
 
-Output format:
-- First: the full revised markdown for the page (frontmatter + body, no "## New facts to check" inside the page content).
-- Then: a clear separator (e.g. "---") and the section "## New facts to check" with the numbered list (or "None.").
+Exact output format (your reply must be exactly two parts):
+
+Part 1 – Full revised markdown for the page: frontmatter (with verified: true) and body only. Do not include "## New facts to check" inside this markdown.
+
+Part 2 – After a line that is exactly "---", output:
+## New facts to check
+1. <claim>
+2. <claim>
+(or the single word "None." if there are no new claims)
+
+Example shape (when there are new claims to check):
+---
+title: ...
+verified: true
+---
+## Overview
+...
+## Sources
+...
+
+---
+## New facts to check
+1. Optional new claim to verify.
+
+(When there are no new claims, Part 2 is just "---" then "## New facts to check" then "None." on the next line.)
 
 Fact-check results (paste below this line):
 `;

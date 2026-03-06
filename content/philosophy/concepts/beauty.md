@@ -11,7 +11,7 @@ tags:
 date: '2026-03-03'
 excerpt: 'Quality that attracts and pleases in a way that has been central to philosophy and art, from Plato’s Forms to modern aesthetics.'
 stub: false
-verified: false
+verified: true
 ---
 
 ## Overview

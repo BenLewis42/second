@@ -1,8 +1,12 @@
-# Automation: Unfilled Tags → Page Generation → Fact-Check
+# Stubs and fact-check (copy-paste to another LLM)
 
-This doc describes how to generate new wiki pages from **unfilled tags**, **populate** them with an LLM, and **fact-check** them. The full pipeline leaves nothing incomplete and logs simple stats.
+**To populate stubs and fact-check using another LLM (no in-app automation):** follow **[LLM_WORKFLOW.md](LLM_WORKFLOW.md)**. It tells you exactly what to run, what to copy, and how to apply the answers.
 
-## Concepts
+Summary: run `output-stubs-for-llm` → copy `.stubs-for-llm.txt` to another LLM → save reply to `.stub-llm-responses.txt` → run `apply-stub-responses`. Same idea for fact-check with `output-fact-check-for-llm` and `.fact-check-for-llm.txt`.
+
+---
+
+## Concepts (reference)
 
 - **Unfilled tag**: A tag used by one or more entries but with no dedicated content page (e.g. `/tags/existentialism` lists entries, but there is no `content/.../existentialism.md`).
 - **stub** (frontmatter): `true` = placeholder content; automation should **populate** this file. Set to `false` after populating.
@@ -16,7 +20,10 @@ This doc describes how to generate new wiki pages from **unfilled tags**, **popu
 | `npm run tag-stubs-and-unverified` | Tag all content with `stub` and `verified` in frontmatter (from content detection). |
 | `npm run suggest-articles` | List all suggested topics (broken wiki links **and** unfilled tags). |
 | `npm run generate-article -- <slug>` | Generate one draft by slug (from suggestions or ad hoc). |
-| **`npm run automation-full-pipeline`** | **Full pipeline**: tag all → create drafts → **populate queue** (stubs) + **fact-check queue** (unverified) → instructions. No API key. |
+| **`npm run output-stubs-for-llm`** | Write all stubs to `.stubs-for-llm.txt` for copy to another LLM. |
+| **`npm run apply-stub-responses -- <file>`** | Apply LLM reply file (`.stub-llm-responses.txt`) back to content files. |
+| **`npm run output-fact-check-for-llm`** | Write fact-check prompt to `.fact-check-for-llm.txt` for copy to another LLM. |
+| `npm run automation-full-pipeline` | Tag + build queues (optional; for reference). |
 | `npm run automation-fact-check -- path1 path2` | Output one combined fact-check prompt for multiple files. |
 | `npm run extract-claims -- [--cursor] <file>` | Extract claims for one or more files (JSON or Cursor prompt). |
 | `npm run apply-fact-check -- <file>` | Print prompt to apply fact-check results; instructs to set `verified: true`. |
@@ -31,7 +38,7 @@ AUTOMATION_LIMIT=3 npm run automation-full-pipeline
 
 **What the pipeline does:** 1) **Tag all content** with `stub` and `verified` (from content + frontmatter). 2) **Create drafts** from unfilled tags (new files get `stub: true`, `verified: false`). 3) **Populate queue** = all paths with `stub: true` → `.automation-populate-queue.txt`. 4) **Fact-check queue** = all paths with `verified: false` → `.automation-fact-check-queue.txt`. 5) **Instructions** and fact-check prompt (from unverified files that have claims).
 
-**What Cursor Automation does (see section 4):** Populate every file in the populate queue; when writing back, set `stub: false`. Fact-check every file in the fact-check queue; when applying results, set `verified: true`. Re-run the pipeline until both queues are empty.
+**Recommended:** Use the copy-paste workflow in [LLM_WORKFLOW.md](LLM_WORKFLOW.md) (output stubs/fact-check to files → copy to another LLM → apply).
 
 **Stats (logged at end):** Tagged (stubs / unverified counts), drafted paths, populate queue path, fact-check queue path, fact-check prompt file.
 
@@ -119,31 +126,8 @@ jobs:
 
 You can then open the `fact-check-prompt` artifact and paste it into Cursor (or a Cursor Automation) to fact-check, then apply per file.
 
-## 4. Cursor Automations (no stubs, no unverified; no API key)
-
-Use [Cursor Automations](https://cursor.com/docs/cloud-agent/automations) so that **every page is populated and verified**. The automation uses the **best LLM model available** in Cursor.
-
-1. **Create an automation** at [cursor.com/automations](https://cursor.com/automations).
-2. **Trigger**: e.g. Schedule (weekly) or GitHub (e.g. push to `main`).
-3. **Instructions** for the agent:
-
-   - Clone the repo and run `npm install`.
-   - Run **`npm run automation-full-pipeline`** (e.g. `AUTOMATION_LIMIT=3`). The pipeline tags all content with **stub** and **verified**, then writes:
-     - **`.automation-populate-queue.txt`** – all paths with `stub: true` (need to be populated).
-     - **`.automation-fact-check-queue.txt`** – all paths with `verified: false` (need to be fact-checked).
-     - **`.automation-populate-instructions.md`** – full instructions.
-   - **Populate** every path in `.automation-populate-queue.txt`: expand stubs into full entries (best model). When you write a file back, set **`stub: false`** in the frontmatter.
-   - **Fact-check** every path in `.automation-fact-check-queue.txt`: run `npm run automation-fact-check -- <paths from file>`, save output to `.automation-fact-check-prompt.txt`, get verdicts, then for each path run `npm run apply-fact-check -- <path>` and apply the reply. When you apply fact-check to a file, set **`verified: true`** in the frontmatter.
-   - Re-run **`npm run automation-full-pipeline`** (use `AUTOMATION_LIMIT=0` to skip new drafts). Repeat until both queues are empty (no stubs, no unverified pages).
-   - Commit and push.
-
-4. **MCPs**: Ensure the automation has git and file read/write so it can clone, run scripts, edit files, and commit.
-
-**Goal**: When the process is done, there are **no stubs** and **no unverified pages**; the queues are driven entirely by the `stub` and `verified` frontmatter tags.
-
 ## Summary
 
-- **stub** and **verified** frontmatter tag every page. Automation uses these to build the **populate queue** (stubs) and **fact-check queue** (unverified).
-- Run **`npm run tag-stubs-and-unverified`** to sync tags; run **`npm run automation-full-pipeline`** to create drafts (optional), tag all, and write both queues + instructions.
-- Cursor Automation populates all stubs (set `stub: false` when done) and fact-checks all unverified (set `verified: true` when done). Re-run the pipeline until both queues are empty.
-- **GitHub**: Use the workflow in section 3 to generate on a schedule; use Cursor Automations (section 4) for the full no-stub, no-unverified flow.
+- **Main workflow:** [LLM_WORKFLOW.md](LLM_WORKFLOW.md) — output stubs and fact-check to files, copy to another LLM, apply responses.
+- **stub** and **verified** frontmatter tag every page. Run **`npm run tag-stubs-and-unverified`** first, then **`output-stubs-for-llm`** or **`output-fact-check-for-llm`**.
+- **GitHub**: Optional workflow in section 3 for scheduled draft generation.

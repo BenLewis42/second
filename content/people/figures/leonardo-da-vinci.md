@@ -14,7 +14,7 @@ tags:
 date: '2026-02-28'
 excerpt: Renaissance polymath and artist (1452-1519). Master of observation and the integration of art with science.
 stub: false
-verified: false
+verified: true
 ---
 
 ### Overview
@@ -112,7 +112,7 @@ These techniques allow the artist to express philosophical ideas about light, pe
 
 > "The eyes which are said to be the windows of the soul are the principal means by which understanding may most fully appreciate the infinite works of nature."
 
-> "I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do."
+*(The saying "Knowing is not enough; we must apply. Being willing is not enough; we must do" is often attributed to Leonardo but originates in Goethe's *Wilhelm Meister's Apprenticeship*; the Leonardo attribution is not supported by his notebooks.)*
 
 
 

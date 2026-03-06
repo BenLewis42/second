@@ -13,7 +13,7 @@ tags:
 date: '2026-02-28'
 excerpt: 'Ancient Greek philosopher, founder of Platonism. Developed the Theory of Forms and explored justice, knowledge, and reality.'
 stub: false
-verified: false
+verified: true
 ---
 
 ### Biography
@@ -96,11 +96,11 @@ His skepticism of imitation paradoxically made him essential to understanding ar
 
 ### Notable Quotes
 
-> "The prison-house is the world of sight, the light of the fire is the sun."
+> "The prison-house is the world of sight, the light of the fire is the sun." (Paraphrase of *Republic* VII 514a–520a; wording varies by translation.)
 
-> "Beauty is the one way into truth."
+> For Plato, beauty and truth are intimately connected; the Form of the Beautiful leads the soul toward truth. (No single verified quotation; this captures a central Platonic theme from *Symposium*, *Phaedrus*, and *Phaedo*.)
 
-> "Everything that is beautiful owes its beauty to the Form of beauty."
+> "Everything that is beautiful owes its beauty to the Form of beauty." (Paraphrase of *Phaedo* 100c–d; wording varies by translation.)
 
 
 ---

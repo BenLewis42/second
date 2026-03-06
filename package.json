@@ -16,7 +16,10 @@
     "automation-fact-check": "tsx scripts/automation-fact-check.ts",
     "automation-full-pipeline": "tsx scripts/automation-full-pipeline.ts",
     "test-automation": "tsx scripts/test-automation.ts",
-    "tag-stubs-and-unverified": "tsx scripts/tag-stubs-and-unverified.ts"
+    "tag-stubs-and-unverified": "tsx scripts/tag-stubs-and-unverified.ts",
+    "output-stubs-for-llm": "tsx scripts/output-stubs-for-llm.ts",
+    "apply-stub-responses": "tsx scripts/apply-stub-responses.ts",
+    "output-fact-check-for-llm": "tsx scripts/output-fact-check-for-llm.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

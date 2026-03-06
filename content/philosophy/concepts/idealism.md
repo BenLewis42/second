@@ -11,7 +11,7 @@ tags:
 date: '2026-03-06'
 excerpt: The view that reality is fundamentally mental or that ideas/Forms are more real than matter.
 stub: false
-verified: false
+verified: true
 ---
 
 ## Overview

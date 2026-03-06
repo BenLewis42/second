@@ -13,7 +13,7 @@ tags:
 date: '2026-03-01'
 excerpt: 'German philosopher who challenged conventional morality and explored the will to power, eternal recurrence, and the Übermensch.'
 stub: false
-verified: false
+verified: true
 ---
 
 ### Biography

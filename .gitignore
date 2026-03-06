@@ -17,6 +17,9 @@ node_modules/
 .automation-populate-queue.txt
 .automation-fact-check-queue.txt
 .automation-populate-instructions.md
+.stubs-for-llm.txt
+.stub-llm-responses.txt
+.fact-check-for-llm.txt
 
 # Misc
 .DS_Store

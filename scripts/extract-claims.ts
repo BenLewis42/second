@@ -125,7 +125,16 @@ export function buildCursorOutput(r: ExtractResult): string {
 const MULTI_REPLY_FORMAT = `
 
 ---
-Reply format: For each entry above, give one line per claim: "N. VERDICT - reason". If VERDICT is INACCURATE, add "Correct: ...". In your reply, prefix each entry's verdicts with a line: ## <file path> (e.g. ## content/philosophy/concepts/foo.md). End each entry with "## New facts to check" and any new claims to verify, or "None."`;
+Exact reply format: For each entry above output a block in this shape (path must match the "## File:" line):
+
+## content/philosophy/concepts/foo.md
+1. ACCURATE - reason
+2. INACCURATE - reason. Correct: <replacement text>
+3. UNCERTAIN - reason
+## New facts to check
+1. <new claim> or None.
+
+One line per claim: "N. VERDICT - reason". If INACCURATE, add "Correct: ..." on the same line. End each block with "## New facts to check" then numbered list or "None."`;
 
 /** Build a multi-file fact-check prompt. Reply format: prefix each entry's verdicts with "## <file path>". */
 export function buildMultiFileCursorOutput(results: ExtractResult[]): string {
