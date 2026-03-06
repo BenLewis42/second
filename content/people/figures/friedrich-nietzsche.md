@@ -1,9 +1,19 @@
 ---
-title: "Friedrich Nietzsche"
-category: "People"
-tags: ["philosopher", "german-philosophy", "19th-century", "existentialism", "metaphysics", "ethics", "power", "perspectivism"]
-date: "2026-03-01"
-excerpt: "German philosopher who challenged conventional morality and explored the will to power, eternal recurrence, and the Übermensch."
+title: Friedrich Nietzsche
+category: People
+tags:
+  - philosopher
+  - german-philosophy
+  - 19th-century
+  - existentialism
+  - metaphysics
+  - ethics
+  - power
+  - perspectivism
+date: '2026-03-01'
+excerpt: 'German philosopher who challenged conventional morality and explored the will to power, eternal recurrence, and the Übermensch.'
+stub: false
+verified: false
 ---
 
 ### Biography

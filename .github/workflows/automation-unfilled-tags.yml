@@ -1,0 +1,49 @@
+# Generate wiki pages from unfilled tags and output fact-check prompt.
+# Runs weekly (Mondays 12:00 UTC) or manually via workflow_dispatch.
+# Artifacts: created-paths.txt, fact-check-prompt.txt (for Cursor or manual fact-check).
+name: Generate pages from unfilled tags
+
+on:
+  schedule:
+    - cron: '0 12 * * 1'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install
+        run: npm ci
+
+      - name: Generate from unfilled tags
+        id: gen
+        env:
+          AUTOMATION_LIMIT: 2
+        run: |
+          set -e
+          npm run automation-unfilled-tags -- --with-claims > automation-out.txt 2>automation-err.txt || true
+          # Created paths: lines before ---FACT_CHECK_PROMPT---
+          sed -n '/^---FACT_CHECK_PROMPT---$/q;p' automation-out.txt | grep -v '^$' > created-paths.txt || true
+          # Fact-check prompt: everything after the separator
+          sed -n '/^---FACT_CHECK_PROMPT---$/,$p' automation-out.txt | tail -n +2 > fact-check-prompt.txt || true
+
+      - name: Upload fact-check prompt
+        uses: actions/upload-artifact@v4
+        with:
+          name: fact-check-prompt
+          path: fact-check-prompt.txt
+
+      - name: Upload created paths
+        uses: actions/upload-artifact@v4
+        with:
+          name: created-paths
+          path: created-paths.txt

@@ -10,6 +10,10 @@ export interface Frontmatter {
   tags: string[];
   date: string;
   excerpt?: string;
+  /** true if content is still a placeholder stub; automation uses this to decide what to populate. */
+  stub?: boolean;
+  /** true after fact-check has been applied; automation uses this to decide what to fact-check. */
+  verified?: boolean;
 }
 
 export interface ContentFile {

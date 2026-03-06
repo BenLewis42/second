@@ -1,9 +1,18 @@
 ---
-title: "Socrates"
-category: "People"
-tags: ["philosopher", "ancient-greece", "ethics", "epistemology", "dialectic", "plato", "virtue"]
-date: "2026-03-03"
-excerpt: "Athenian philosopher (c. 470–399 BCE) who taught through questioning and influenced Plato; executed for impiety and corrupting the youth."
+title: Socrates
+category: People
+tags:
+  - philosopher
+  - ancient-greece
+  - ethics
+  - epistemology
+  - dialectic
+  - plato
+  - virtue
+date: '2026-03-03'
+excerpt: Athenian philosopher (c. 470–399 BCE) who taught through questioning and influenced Plato; executed for impiety and corrupting the youth.
+stub: false
+verified: false
 ---
 
 ## Overview

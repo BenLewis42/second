@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { contentDir } from './content';
-import { getAllContent } from './markdown';
+import { getAllContent, getAllTags, getContentByTag, getContentPathBySlug } from './markdown';
 import type { ContentFile } from './markdown';
 
 const WIKI_LINK_REGEX = /\[\[([^\]]+)\]\]/g;
@@ -178,6 +178,104 @@ export async function getSuggestedTopicsFromConnections(): Promise<SuggestedTopi
   return suggestions.sort((a, b) => b.referenceCount - a.referenceCount);
 }
 
+/** Slug-normalized tag for comparison with content slugs. */
+function tagToSlug(tag: string): string {
+  return tag.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+}
+
+/**
+ * Unfilled tag: used by at least one entry but has no dedicated content page.
+ */
+export interface UnfilledTagInfo {
+  tag: string;
+  slug: string;
+  referenceCount: number;
+  referringSlugs: Array<{ category: string; subcategory: string; slug: string; title: string }>;
+  suggestedTags: string[];
+}
+
+/**
+ * Get all tags that are used in the wiki but have no dedicated page (unfilled tags).
+ * Sorted by reference count descending.
+ */
+export async function getUnfilledTags(): Promise<UnfilledTagInfo[]> {
+  const allTags = await getAllTags();
+  const unfilled: UnfilledTagInfo[] = [];
+
+  for (const tag of allTags) {
+    const slug = tagToSlug(tag);
+    const contentPath = await getContentPathBySlug(slug);
+    if (contentPath !== null) continue; // has dedicated page
+
+    const files = await getContentByTag(tag);
+    if (files.length === 0) continue;
+
+    const referringSlugs = files
+      .filter((f): f is ContentFile & { category: string; subcategory: string } => !!f.category && !!f.subcategory)
+      .map((f) => ({
+        category: f.category,
+        subcategory: f.subcategory,
+        slug: f.slug,
+        title: f.frontmatter.title,
+      }));
+
+    const suggestedTags = new Set<string>();
+    files.forEach((f) => f.frontmatter.tags?.forEach((t) => suggestedTags.add(t)));
+    suggestedTags.delete(tag);
+
+    unfilled.push({
+      tag,
+      slug,
+      referenceCount: files.length,
+      referringSlugs,
+      suggestedTags: Array.from(suggestedTags).slice(0, 10),
+    });
+  }
+
+  return unfilled.sort((a, b) => b.referenceCount - a.referenceCount);
+}
+
+/**
+ * Suggest new articles based on unfilled tags (tags with no dedicated page).
+ */
+export async function getSuggestedTopicsFromUnfilledTags(): Promise<SuggestedTopic[]> {
+  const unfilled = await getUnfilledTags();
+
+  return unfilled.map((u) => {
+    const title = u.tag
+      .split(/[- ]+/)
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join(' ');
+    const { category, subcategory } = inferCategory(u.referringSlugs, u.slug);
+    return {
+      title: title || u.tag,
+      slug: u.slug,
+      category,
+      subcategory,
+      reason: 'frequent_tag' as const,
+      referenceCount: u.referenceCount,
+      referringSlugs: u.referringSlugs,
+      suggestedTags: u.suggestedTags.length ? u.suggestedTags.slice(0, 6) : [u.tag, 'concept'],
+    };
+  });
+}
+
+/**
+ * All suggested topics: broken wiki links first, then unfilled tags (by reference count).
+ */
+export async function getAllSuggestedTopics(): Promise<SuggestedTopic[]> {
+  const [fromLinks, fromTags] = await Promise.all([
+    getSuggestedTopicsFromConnections(),
+    getSuggestedTopicsFromUnfilledTags(),
+  ]);
+  const bySlug = new Map<string, SuggestedTopic>();
+  for (const t of fromLinks) bySlug.set(t.slug, t);
+  for (const t of fromTags) {
+    if (!bySlug.has(t.slug)) bySlug.set(t.slug, t);
+  }
+  return Array.from(bySlug.values()).sort((a, b) => b.referenceCount - a.referenceCount);
+}
+
 /**
  * Generate a draft markdown file for a suggested topic (frontmatter + section stubs).
  */
@@ -200,6 +298,8 @@ category: "${categoryLabel}"
 tags: [${tags.map((t) => `"${t}"`).join(', ')}]
 date: "${date}"
 excerpt: "Add a one-sentence summary."
+stub: true
+verified: false
 ---
 
 `;

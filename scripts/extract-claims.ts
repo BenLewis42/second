@@ -108,7 +108,8 @@ Reply format (so your reply can be used to apply updates): For each item give on
 
 const CURSOR_FLAGS = ['--cursor', '--for-cursor'];
 
-function buildCursorOutput(r: ExtractResult): string {
+/** Build a single-file fact-check prompt for Cursor chat. Exported for automation scripts. */
+export function buildCursorOutput(r: ExtractResult): string {
   const parts: string[] = [];
   if (r.claims.length > 0) {
     const list = r.claims.map((c, i) => `${i + 1}. ${c}`).join('\n');
@@ -119,6 +120,33 @@ function buildCursorOutput(r: ExtractResult): string {
     parts.push(`${parts.length ? '\n\n' : ''}${CURSOR_QUOTES_PROMPT}\n\n${quoteList}`);
   }
   return parts.length > 0 ? parts.join('') + CURSOR_REPLY_FORMAT : '';
+}
+
+const MULTI_REPLY_FORMAT = `
+
+---
+Reply format: For each entry above, give one line per claim: "N. VERDICT - reason". If VERDICT is INACCURATE, add "Correct: ...". In your reply, prefix each entry's verdicts with a line: ## <file path> (e.g. ## content/philosophy/concepts/foo.md). End each entry with "## New facts to check" and any new claims to verify, or "None."`;
+
+/** Build a multi-file fact-check prompt. Reply format: prefix each entry's verdicts with "## <file path>". */
+export function buildMultiFileCursorOutput(results: ExtractResult[]): string {
+  const blocks: string[] = [];
+  for (const r of results) {
+    const segs: string[] = [];
+    if (r.claims.length > 0) {
+      const list = r.claims.map((c, i) => `${i + 1}. ${c}`).join('\n');
+      segs.push(`${CURSOR_PROMPT}\n\nClaims:\n${list}`);
+    }
+    if (r.quotes.length > 0) {
+      const quoteList = r.quotes.map((q, i) => `${i + 1}. ${q}`).join('\n');
+      segs.push(`${CURSOR_QUOTES_PROMPT}\n\n${quoteList}`);
+    }
+    if (segs.length > 0) {
+      blocks.push(`## File: ${r.file}\nEntry: ${r.title}\n\n${segs.join('\n\n')}`);
+    }
+  }
+  if (blocks.length === 0) return '';
+  const intro = `You are a fact-checker for an encyclopedia. Below are ${results.length} entry/entries. For each claim or quote, reply ACCURATE, INACCURATE, or UNCERTAIN with a short reason. Use scholarly consensus (e.g. SEP, Britannica). Do not guess.\n\n`;
+  return intro + blocks.join('\n\n---\n\n') + MULTI_REPLY_FORMAT;
 }
 
 function main(): void {

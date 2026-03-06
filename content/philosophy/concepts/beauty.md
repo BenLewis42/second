@@ -1,9 +1,17 @@
 ---
-title: "Beauty"
-category: "Concepts"
-tags: ["beauty", "aesthetics", "plato", "forms", "art", "ethics"]
-date: "2026-03-03"
-excerpt: "Quality that attracts and pleases in a way that has been central to philosophy and art, from Plato’s Forms to modern aesthetics."
+title: Beauty
+category: Concepts
+tags:
+  - beauty
+  - aesthetics
+  - plato
+  - forms
+  - art
+  - ethics
+date: '2026-03-03'
+excerpt: 'Quality that attracts and pleases in a way that has been central to philosophy and art, from Plato’s Forms to modern aesthetics.'
+stub: false
+verified: false
 ---
 
 ## Overview

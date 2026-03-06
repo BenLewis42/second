@@ -19,8 +19,9 @@ const APPLY_PROMPT = `Apply the fact-check results below to this wiki entry.
 Do the following in order:
 
 1. **Make these updates** – Apply every suggested change from the fact-check (fix or remove INACCURATE items; note UNCERTAIN for follow-up). For any "Correct: ..." use that text in the entry.
-2. **Make any further additions** – If you deem it necessary, add or expand content (e.g. missing context, caveats). Keep the same tone and structure. Do not invent or add sources, URLs, or citations; only the user may add verified references.
-3. **Provide new facts for checking** – After the revised content, add a section "## New facts to check" with a numbered list of any new factual claims or quoted passages that should be verified (from your edits or additions). If there are none, write "None."
+2. **Set \`verified: true\`** in the YAML frontmatter so automation knows this page has been fact-checked.
+3. **Make any further additions** – If you deem it necessary, add or expand content (e.g. missing context, caveats). Keep the same tone and structure. Do not invent or add sources, URLs, or citations; only the user may add verified references.
+4. **Provide new facts for checking** – After the revised content, add a section "## New facts to check" with a numbered list of any new factual claims or quoted passages that should be verified (from your edits or additions). If there are none, write "None."
 
 Output format:
 - First: the full revised markdown for the page (frontmatter + body, no "## New facts to check" inside the page content).

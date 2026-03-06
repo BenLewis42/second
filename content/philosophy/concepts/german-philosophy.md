@@ -1,14 +1,14 @@
 ---
-title: Existentialism
+title: German Philosophy
 category: Concepts
 tags:
-  - german-philosophy
+  - philosopher
   - 19th-century
   - existentialism
   - metaphysics
   - ethics
   - power
-date: '2026-03-03'
+date: '2026-03-06'
 excerpt: Add a one-sentence summary.
 stub: true
 verified: false
@@ -28,7 +28,7 @@ Outline main ideas. Use [[wiki-links]] to connect to other entries.
 
 ## Connections
 
-Referenced by: [[friedrich-nietzsche]], [[friedrich-nietzsche]], [[friedrich-nietzsche]].
+Referenced by: [[friedrich-nietzsche]], [[19th-century]], [[ethics]], [[existentialism]], [[metaphysics]], [[philosopher]].
 
 
 

@@ -12,6 +12,12 @@ node_modules/
 # Testing
 .coverage/
 
+# Automation outputs (generated prompts and queue for Cursor Automation)
+.automation-fact-check-prompt.txt
+.automation-populate-queue.txt
+.automation-fact-check-queue.txt
+.automation-populate-instructions.md
+
 # Misc
 .DS_Store
 *.pem

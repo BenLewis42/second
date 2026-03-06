@@ -1,9 +1,18 @@
 ---
-title: "Renaissance"
-category: "Concepts"
-tags: ["renaissance", "humanism", "art", "philosophy", "ancient-greece", "plato", "leonardo-da-vinci"]
-date: "2026-03-03"
-excerpt: "Cultural movement (roughly 14th–17th c.) that revived classical learning and placed human experience and reason at the center of art and thought."
+title: Renaissance
+category: Concepts
+tags:
+  - renaissance
+  - humanism
+  - art
+  - philosophy
+  - ancient-greece
+  - plato
+  - leonardo-da-vinci
+date: '2026-03-03'
+excerpt: Cultural movement (roughly 14th–17th c.) that revived classical learning and placed human experience and reason at the center of art and thought.
+stub: false
+verified: false
 ---
 
 ## Overview

@@ -1,14 +1,14 @@
 ---
-title: Existentialism
+title: Art
 category: Concepts
 tags:
-  - german-philosophy
-  - 19th-century
-  - existentialism
-  - metaphysics
+  - beauty
+  - aesthetics
+  - plato
+  - forms
   - ethics
-  - power
-date: '2026-03-03'
+  - renaissance
+date: '2026-03-06'
 excerpt: Add a one-sentence summary.
 stub: true
 verified: false
@@ -28,7 +28,7 @@ Outline main ideas. Use [[wiki-links]] to connect to other entries.
 
 ## Connections
 
-Referenced by: [[friedrich-nietzsche]], [[friedrich-nietzsche]], [[friedrich-nietzsche]].
+Referenced by: [[beauty]], [[renaissance]].
 
 
 

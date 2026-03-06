@@ -1,9 +1,19 @@
 ---
-title: "Plato"
-category: "People"
-tags: ["philosopher", "ancient-greece", "idealism", "metaphysics", "epistemology", "forms", "beauty", "mathematical-proportion"]
-date: "2026-02-28"
-excerpt: "Ancient Greek philosopher, founder of Platonism. Developed the Theory of Forms and explored justice, knowledge, and reality."
+title: Plato
+category: People
+tags:
+  - philosopher
+  - ancient-greece
+  - idealism
+  - metaphysics
+  - epistemology
+  - forms
+  - beauty
+  - mathematical-proportion
+date: '2026-02-28'
+excerpt: 'Ancient Greek philosopher, founder of Platonism. Developed the Theory of Forms and explored justice, knowledge, and reality.'
+stub: false
+verified: false
 ---
 
 ### Biography

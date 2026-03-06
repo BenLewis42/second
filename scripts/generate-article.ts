@@ -1,9 +1,10 @@
 /**
  * Generate a draft article for a suggested topic (by slug) or a new topic.
  * Run: npm run generate-article -- <slug>
+ * Uses both broken wiki-link suggestions and unfilled-tag suggestions.
  */
 import {
-  getSuggestedTopicsFromConnections,
+  getAllSuggestedTopics,
   writeDraftArticle,
   generateDraftOutline,
   type SuggestedTopic,
@@ -26,7 +27,7 @@ async function main() {
     process.exit(1);
   }
 
-  const suggestions = await getSuggestedTopicsFromConnections();
+  const suggestions = await getAllSuggestedTopics();
   const slug = slugify(arg);
   let topic: SuggestedTopic | undefined = suggestions.find((t) => t.slug === slug);
 

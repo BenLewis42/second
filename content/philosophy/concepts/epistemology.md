@@ -1,14 +1,14 @@
 ---
-title: Existentialism
+title: Epistemology
 category: Concepts
 tags:
-  - german-philosophy
-  - 19th-century
-  - existentialism
+  - philosopher
+  - ancient-greece
+  - idealism
   - metaphysics
-  - ethics
-  - power
-date: '2026-03-03'
+  - forms
+  - beauty
+date: '2026-03-06'
 excerpt: Add a one-sentence summary.
 stub: true
 verified: false
@@ -28,7 +28,7 @@ Outline main ideas. Use [[wiki-links]] to connect to other entries.
 
 ## Connections
 
-Referenced by: [[friedrich-nietzsche]], [[friedrich-nietzsche]], [[friedrich-nietzsche]].
+Referenced by: [[plato]], [[socrates]], [[ancient-greece]].
 
 
 

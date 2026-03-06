@@ -11,7 +11,12 @@
     "suggest-articles": "tsx scripts/suggest-articles.ts",
     "generate-article": "tsx scripts/generate-article.ts",
     "extract-claims": "tsx scripts/extract-claims.ts",
-    "apply-fact-check": "tsx scripts/apply-fact-check-prompt.ts"
+    "apply-fact-check": "tsx scripts/apply-fact-check-prompt.ts",
+    "automation-unfilled-tags": "tsx scripts/automation-unfilled-tags.ts",
+    "automation-fact-check": "tsx scripts/automation-fact-check.ts",
+    "automation-full-pipeline": "tsx scripts/automation-full-pipeline.ts",
+    "test-automation": "tsx scripts/test-automation.ts",
+    "tag-stubs-and-unverified": "tsx scripts/tag-stubs-and-unverified.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

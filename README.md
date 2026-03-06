@@ -104,13 +104,18 @@ The system maintains a graph of all connections to show:
 │   ├── markdown.ts            # Markdown parsing, wiki links, backlinks
 │   ├── content.ts             # Content organization, content root path
 │   ├── graph.ts               # Connection graph building
-│   └── article-suggestions.ts # Article suggestions from broken wiki links + draft generation
+│   └── article-suggestions.ts # Article suggestions from broken wiki links + unfilled tags
 ├── scripts/                   # CLI tools (npm run <script>)
-│   ├── suggest-articles.ts    # List suggested new articles from broken wiki links
-│   ├── generate-article.ts     # Create a draft article from a slug
+│   ├── suggest-articles.ts    # List suggested new articles (broken links + unfilled tags)
+│   ├── generate-article.ts    # Create a draft article from a slug
 │   ├── extract-claims.ts      # Extract factual claims (and quotes) for verification
-│   └── apply-fact-check-prompt.ts  # Print prompt to apply fact-check results to an entry
-├── docs/                      # Documentation (e.g. FACT_CHECKING.md)
+│   ├── apply-fact-check-prompt.ts  # Print prompt to apply fact-check results to an entry
+│   ├── tag-stubs-and-unverified.ts # Tag all content with stub/verified for automation
+│   ├── automation-full-pipeline.ts # Full pipeline: tag, queues for populate + fact-check
+│   ├── automation-fact-check.ts    # Batch fact-check prompt for multiple files
+│   ├── automation-unfilled-tags.ts # Optional: generate drafts only (no stub/verified queues)
+│   └── test-automation.ts     # Run automation + fact-check tests
+├── docs/                      # Documentation (FACT_CHECKING.md, AUTOMATION.md)
 ├── package.json
 ├── next.config.js             # Next.js configuration (static export)
 └── tsconfig.json              # TypeScript configuration
@@ -329,6 +334,11 @@ This creates an optimized build ready for deployment.
 - `npm run generate-article -- <slug>` - Create a draft article from a slug
 - `npm run extract-claims -- [--cursor] <file.md>` - Extract claims for fact-checking; see [docs/FACT_CHECKING.md](docs/FACT_CHECKING.md)
 - `npm run apply-fact-check -- <file.md>` - Print prompt to apply fact-check results to an entry
+- `npm run tag-stubs-and-unverified` - Tag all content with stub/verified
+- `npm run automation-full-pipeline` - Full pipeline (populate + fact-check queues); see [docs/AUTOMATION.md](docs/AUTOMATION.md)
+- `npm run automation-fact-check -- <file.md> [...]` - Batch fact-check prompt for multiple files
+- `npm run test-automation` - Run automation and fact-check tests
+- `npm run automation-unfilled-tags` - Optional: generate drafts only (no stub/verified queues)
 
 ## Customization
 

@@ -1,9 +1,20 @@
 ---
-title: "Leonardo da Vinci"
-category: "People"
-tags: ["artist", "renaissance", "italian-artist", "observation", "sfumato", "anatomy", "scientific-method", "mathematical-proportion", "engineering"]
-date: "2026-02-28"
-excerpt: "Renaissance polymath and artist (1452-1519). Master of observation and the integration of art with science."
+title: Leonardo da Vinci
+category: People
+tags:
+  - artist
+  - renaissance
+  - italian-artist
+  - observation
+  - sfumato
+  - anatomy
+  - scientific-method
+  - mathematical-proportion
+  - engineering
+date: '2026-02-28'
+excerpt: Renaissance polymath and artist (1452-1519). Master of observation and the integration of art with science.
+stub: false
+verified: false
 ---
 
 ### Overview

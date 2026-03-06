@@ -92,4 +92,6 @@ Summary: **extract → fact-check in Cursor → apply-fact-check prompt + paste 
 
 ## Later: automation
 
+For the full automation (unfilled tags → populate stubs → fact-check unverified), see [AUTOMATION.md](AUTOMATION.md). Use `npm run automation-full-pipeline` for populate + fact-check queues, and `npm run automation-fact-check` to build a combined fact-check prompt for multiple files.
+
 You can extend this (e.g. run extract-claims in CI, or add a step that fails if too many claims are marked INACCURATE after Cursor verification). The scripts only report; they do not modify the wiki.

@@ -1,5 +1,5 @@
 ---
-title: Existentialism
+title: Philosopher
 category: Concepts
 tags:
   - german-philosophy
@@ -8,7 +8,7 @@ tags:
   - metaphysics
   - ethics
   - power
-date: '2026-03-03'
+date: '2026-03-06'
 excerpt: Add a one-sentence summary.
 stub: true
 verified: false
@@ -28,7 +28,7 @@ Outline main ideas. Use [[wiki-links]] to connect to other entries.
 
 ## Connections
 
-Referenced by: [[friedrich-nietzsche]], [[friedrich-nietzsche]], [[friedrich-nietzsche]].
+Referenced by: [[friedrich-nietzsche]], [[plato]], [[socrates]], [[ethics]].
 
 
 
