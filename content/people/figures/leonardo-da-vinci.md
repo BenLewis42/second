@@ -26,13 +26,13 @@ Leonardo da Vinci represents the ideal Renaissance man - an artist, scientist, e
 ### Key Works
 
 **Paintings:**
-- *Mona Lisa* - Enigmatic smile, revolutionary use of sfumato
-- *The Last Supper* - Psychological depth and compositional mastery
-- *Virgin of the Rocks* - Two versions, mystical atmosphere
-- *The Virgin and Child with Saint Anne*
+- *Mona Lisa* (c. 1503–1506) - Enigmatic smile, revolutionary use of sfumato
+- *The Last Supper* (1495–1498) - Psychological depth and compositional mastery
+- *Virgin of the Rocks* (c. 1483–1486) - Two versions, mystical atmosphere
+- *The Virgin and Child with Saint Anne* (c. 1510)
 
 **Drawings & Studies:**
-- *Vitruvian Man* - Iconic exploration of human proportion
+- *Vitruvian Man* (c. 1490) - Iconic exploration of human proportion
 - Detailed anatomical studies (from cadaver dissections)
 - Engineering sketches (flying machines, weapons, hydraulics)
 - Natural observations (water flow, plant growth)

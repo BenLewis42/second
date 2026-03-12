@@ -56,11 +56,11 @@ Plato believed in the primacy of mathematical relationships and proportion as ex
 
 ### Major Works
 
-- **Republic** - His masterwork on justice, the ideal state, and the nature of reality
-- **Phaedo** - Death of Socrates, immortality of the soul
-- **Symposium** - Nature of [[love]] and [[beauty]]
-- **Timaeus** - Creation of the universe and the role of [[mathematical-proportion]]
-- **Apology** - Socrates' defense at trial
+- **Republic** (c. 380 BCE) - His masterwork on justice, the ideal state, and the nature of reality
+- **Phaedo** (c. 360 BCE) - Death of Socrates, immortality of the soul
+- **Symposium** (c. 385–370 BCE) - Nature of [[love]] and [[beauty]]
+- **Timaeus** (c. 360 BCE) - Creation of the universe and the role of [[mathematical-proportion]]
+- **Apology** (c. 399 BCE) - Socrates' defense at trial
 
 
 ---

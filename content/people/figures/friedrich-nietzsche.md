@@ -54,12 +54,11 @@ Nietzsche's fundamental philosophical project. Western civilization is built on 
 
 ### Major Works
 
-- **Beyond Good and Evil** - Challenges conventional morality and Western philosophical traditions
-- **Thus Spoke Zarathustra** - Poetic philosophical novel presenting the Übermensch and eternal recurrence
-- **The Genealogy of Morals** - Historical critique of the origins of Western morality
-- **The Birth of Tragedy** - Analysis of Greek culture, art, and the decline of tragedy
-- **On the Genealogy of Morality** - Traces the psychological origins of moral systems
-- **Human, All Too Human** - Aphoristic exploration of human nature and culture
+- **The Birth of Tragedy** (1872) - Analysis of Greek culture, art, and the decline of tragedy
+- **Human, All Too Human** (1878) - Aphoristic exploration of human nature and culture
+- **Thus Spoke Zarathustra** (1883–1885) - Poetic philosophical novel presenting the Übermensch and eternal recurrence
+- **Beyond Good and Evil** (1886) - Challenges conventional morality and Western philosophical traditions
+- **On the Genealogy of Morality** (1887) - Historical critique of the origins of Western morality and moral psychology
 
 ---
 

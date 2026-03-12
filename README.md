@@ -235,6 +235,17 @@ The pursuit of excellence ([[Arete]]) in virtue ethics parallels the artist's pu
 - **date** (required): Publication date (YYYY-MM-DD format)
 - **excerpt** (optional): Brief summary shown in lists
 
+### Style Guidelines for Works and Dates
+
+- **Major Works / Key Works sections**: when you list books, dialogues, or artworks, include the **year or approximate range** in parentheses right after the title.
+  - People (e.g. philosophers):  
+    - `- **Republic** (c. 380 BCE) - ...`  
+    - `- **Thus Spoke Zarathustra** (1883–1885) - ...`
+  - Artists (e.g. Leonardo):  
+    - `- *Mona Lisa* (c. 1503–1506) - ...`  
+    - `- *Vitruvian Man* (c. 1490) - ...`
+- Use `c.` for approximate dates and an en dash `–` for ranges.
+
 ### File Naming
 
 Use kebab-case (lowercase with hyphens) for filenames:
