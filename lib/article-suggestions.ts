@@ -7,6 +7,19 @@ import type { ContentFile } from './markdown';
 
 const WIKI_LINK_REGEX = /\[\[([^\]]+)\]\]/g;
 
+/**
+ * Some tags/targets are too granular or role-like to be useful as standalone
+ * concept pages. We ignore these when generating suggestions so drafts focus
+ * on historically/philosophically meaningful concepts instead of adjectives.
+ *
+ * NOTE: keep this in sync with README tag guidelines.
+ */
+const IGNORED_TOPIC_SLUGS = new Set<string>([
+  'italian-artist',
+  'artist',
+  'observation',
+]);
+
 export interface SuggestedTopic {
   /** Display title (from first reference, or slug title-cased) */
   title: string;
@@ -158,6 +171,8 @@ export async function getSuggestedTopicsFromConnections(): Promise<SuggestedTopi
   const suggestions: SuggestedTopic[] = [];
   for (const [slug, data] of missingCounts) {
     if (data.referring.length === 0) continue;
+    // Skip low-value / role-like topics that shouldn't become standalone pages
+    if (IGNORED_TOPIC_SLUGS.has(slug)) continue;
     const { category, subcategory } = inferCategory(data.referring, slug);
     const title = data.rawTitle
       .split('-')
@@ -204,6 +219,7 @@ export async function getUnfilledTags(): Promise<UnfilledTagInfo[]> {
 
   for (const tag of allTags) {
     const slug = tagToSlug(tag);
+    if (IGNORED_TOPIC_SLUGS.has(slug)) continue;
     const contentPath = await getContentPathBySlug(slug);
     if (contentPath !== null) continue; // has dedicated page
 

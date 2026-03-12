@@ -267,7 +267,8 @@ Use `[[concept-name]]` to link within your wiki:
 - Create bridges between categories: Use same tag for Philosophy and Art content
 - Use period tags: `ancient-greece`, `renaissance`, `modern-era`
 - Use method tags: `phenomenology`, `dialectic`, `empiricism`
-- Use connection tags: Link related people/movements
+- Use connection tags: Link related people/movements (e.g. `plato-and-renaissance-art`)
+- Avoid overly narrow role tags as standalone concepts (e.g. `italian-artist`, `artist`, `observation`). These can still be tags, but the automation **will not** generate dedicated pages for them; prefer deeper conceptual bridges like `scientific-observation`, `art-and-knowledge`, or `art-philosophy-dialogue`.
 
 **Example tags for natural connections:**
 ```
