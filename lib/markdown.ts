@@ -126,7 +126,7 @@ export async function getContentByTag(tag: string): Promise<ContentFile[]> {
   return results;
 }
 
-// Wiki link conversion: [[concept-name]] -> [Concept Name](link)
+// Wiki link conversion: [[concept-name]] -> <a href="/...">Concept Name</a>
 export function convertWikiLinks(
   content: string,
   allFiles: ContentFile[]
@@ -146,7 +146,9 @@ export function convertWikiLinks(
 
     if (matchingFile && matchingFile.category && matchingFile.subcategory) {
       const url = `/${matchingFile.category}/${matchingFile.subcategory}/${matchingFile.slug}`;
-      return `[${linkText}](${url})`;
+      // We are operating on already-rendered HTML, so return a real <a> tag,
+      // not markdown link syntax, to avoid showing the raw URL in the article.
+      return `<a href="${url}">${linkText}</a>`;
     }
 
     // Return original if not found (styled as broken link)
