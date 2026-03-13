@@ -33,10 +33,9 @@ export default async function Home() {
   return (
     <div className="page-wrapper">
       <div className="page-section">
-        <h1>Second Brain</h1>
+        <h1>Second</h1>
         <p className="intro-text">
-          A small cultural wiki connecting art and philosophy through tags,
-          wiki-links, and references. Browse by category, explore by tags, and
+          A personal commonplace book. Browse by category, explore by tags, and
           follow connections between entries.
         </p>
       </div>
@@ -75,11 +74,7 @@ export default async function Home() {
           <div key={category.name} className="card">
             <h2 className="heading-reset">{category.label}</h2>
             <p className="section-description">
-              {category.name === 'people'
-                ? 'Philosophers, artists, and figures'
-                : category.name === 'philosophy'
-                  ? 'Concepts'
-                  : 'Movements'}
+              {category.subcategories.length} {category.subcategories.length === 1 ? 'section' : 'sections'}
             </p>
             <div className="flex-col gap-small">
               {category.subcategories.map((subcategory) => (

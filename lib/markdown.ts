@@ -6,7 +6,7 @@ import { contentDir } from './content';
 
 export interface Frontmatter {
   title: string;
-  category: 'People' | 'Concepts' | 'Movements';
+  category: string;
   tags: string[];
   date: string;
   excerpt?: string;
@@ -14,6 +14,8 @@ export interface Frontmatter {
   stub?: boolean;
   /** true after fact-check has been applied; automation uses this to decide what to fact-check. */
   verified?: boolean;
+  /** Notion page ID this was migrated from, if any. */
+  notionId?: string;
 }
 
 export interface ContentFile {
@@ -77,8 +79,15 @@ export async function getContentFile(
   };
 }
 
+function discoverCategories(): string[] {
+  if (!fs.existsSync(contentDir)) return [];
+  return fs.readdirSync(contentDir).filter(
+    (f) => fs.statSync(path.join(contentDir, f)).isDirectory()
+  );
+}
+
 export async function getAllTags(): Promise<string[]> {
-  const categories = ['people', 'philosophy', 'art'];
+  const categories = discoverCategories();
   const allTags = new Set<string>();
 
   for (const category of categories) {
@@ -101,7 +110,7 @@ export async function getAllTags(): Promise<string[]> {
 }
 
 export async function getContentByTag(tag: string): Promise<ContentFile[]> {
-  const categories = ['people', 'philosophy', 'art'];
+  const categories = discoverCategories();
   const results: ContentFile[] = [];
 
   for (const category of categories) {
@@ -162,7 +171,7 @@ export async function getBacklinks(
   targetSubcategory: string,
   targetSlug: string
 ): Promise<ContentFile[]> {
-  const categories = ['people', 'philosophy', 'art'];
+  const categories = discoverCategories();
   const backlinks: ContentFile[] = [];
   const targetTitle = targetSlug
     .replace(/-/g, ' ')
@@ -222,7 +231,7 @@ export async function getBacklinks(
 export async function getAllContent(): Promise<
   Array<ContentFile & { category: string; subcategory: string }>
 > {
-  const categories = ['people', 'philosophy', 'art'];
+  const categories = discoverCategories();
   const allContent: Array<ContentFile & { category: string; subcategory: string }> = [];
 
   for (const category of categories) {

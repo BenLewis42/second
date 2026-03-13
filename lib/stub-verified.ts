@@ -87,7 +87,7 @@ export function setStubVerified(filePath: string, stub: boolean, verified: boole
   const raw = fs.readFileSync(resolved, 'utf-8');
   const { data, content } = matter(raw);
   const fm = { ...(data as Record<string, unknown>), stub, verified };
-  const newRaw = matter.stringify(content, fm, { lineWidth: 1000 });
+  const newRaw = matter.stringify(content, fm, { lineWidth: 1000 } as never);
   fs.writeFileSync(resolved, newRaw, 'utf-8');
 }
 
@@ -105,7 +105,7 @@ export function tagAllContent(): { path: string; stub: boolean; verified: boolea
     const stub = fm.stub === true || (fm.stub !== false && detectedStub);
     const verified = fm.verified === true;
     const next = { ...fm, stub, verified };
-    const newRaw = matter.stringify(content, next, { lineWidth: 1000 });
+    const newRaw = matter.stringify(content, next, { lineWidth: 1000 } as never);
     fs.writeFileSync(abs, newRaw, 'utf-8');
     results.push({ path: filePath, stub, verified });
   }

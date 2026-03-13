@@ -4,13 +4,13 @@ import Footer from './components/footer';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Second Brain - Art & Philosophy',
+  title: 'Second — Commonplace Book',
   description:
-    'A personal second brain collecting interesting information on art and philosophy',
+    'A personal commonplace book connecting knowledge through tags, wiki-links, and references.',
   openGraph: {
-    title: 'Second Brain - Art & Philosophy',
+    title: 'Second — Commonplace Book',
     description:
-      'A personal second brain collecting interesting information on art and philosophy',
+      'A personal commonplace book connecting knowledge through tags, wiki-links, and references.',
     type: 'website',
   },
 };
