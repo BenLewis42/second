@@ -10,6 +10,19 @@ export interface ContentCategory {
 /** Canonical content root; used by markdown, article-suggestions, and content helpers. */
 export const contentDir = path.join(process.cwd(), 'content');
 
+const LABEL_OVERRIDES: Record<string, string> = {
+  cs: 'CS',
+  'social-science': 'Social Science',
+};
+
+function dirLabel(dir: string): string {
+  if (LABEL_OVERRIDES[dir]) return LABEL_OVERRIDES[dir];
+  return dir
+    .split('-')
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
 export function getCategories(): ContentCategory[] {
   const categories: ContentCategory[] = [];
 
@@ -19,14 +32,17 @@ export function getCategories(): ContentCategory[] {
     if (fs.statSync(categoryPath).isDirectory()) {
       const subcategories = fs
         .readdirSync(categoryPath)
-        .filter(
-          (f) =>
-            fs.statSync(path.join(categoryPath, f)).isDirectory()
-        );
+        .filter((f) => {
+          const sub = path.join(categoryPath, f);
+          if (!fs.statSync(sub).isDirectory()) return false;
+          return fs.readdirSync(sub).some((s) => s.endsWith('.md'));
+        });
+
+      if (subcategories.length === 0) return;
 
       categories.push({
         name: dir,
-        label: dir.charAt(0).toUpperCase() + dir.slice(1),
+        label: dirLabel(dir),
         subcategories,
       });
     }

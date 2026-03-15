@@ -496,6 +496,10 @@ th {
   color: var(--link-color);
 }
 
+.tags-cta {
+  margin-top: 1rem;
+}
+
 /* Subcategory Page */
 .subcategory-heading {
   margin-top: 0;
