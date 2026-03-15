@@ -7,7 +7,7 @@ tags:
   - static-typing
   - generics
 date: '2025-10-14'
-excerpt: Comprehensive TypeScript reference covering types, generics, utility types, decorators, modules, and modern features like the using keyword.
+excerpt: 'Comprehensive TypeScript reference covering types, generics, utility types, decorators, modules, and modern features like the using keyword.'
 stub: false
 verified: false
 notionId: 28ba584d-bff3-80cd-8bde-ce0d977bbec2

@@ -6,7 +6,7 @@ tags:
   - pandemic
   - public-health
 date: '2024-03-20'
-excerpt: Brief notes on COVID-19 global mortality, including excess death estimates and comparison to AIDS.
+excerpt: 'Brief notes on COVID-19 global mortality, including excess death estimates and comparison to AIDS.'
 stub: true
 verified: false
 notionId: b61fbda9-8c87-46f1-8199-b9f530f1ba85

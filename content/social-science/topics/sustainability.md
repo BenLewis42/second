@@ -8,7 +8,7 @@ tags:
   - consumerism
   - emissions
 date: '2024-08-26'
-excerpt: Wide-ranging notes on sustainability, climate engineering, desertification, ozone depletion, and the unsustainability of industrial consumer society.
+excerpt: 'Wide-ranging notes on sustainability, climate engineering, desertification, ozone depletion, and the unsustainability of industrial consumer society.'
 stub: false
 verified: false
 notionId: 8a2b9e95-6d39-4272-82d1-fbf45f30bc00

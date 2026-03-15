@@ -6,7 +6,7 @@ tags:
   - jvm
   - object-oriented
 date: '2024-02-20'
-excerpt: Overview of Java, a high-level, class-based, object-oriented language designed for write once, run anywhere portability via the JVM.
+excerpt: 'Overview of Java, a high-level, class-based, object-oriented language designed for write once, run anywhere portability via the JVM.'
 stub: false
 verified: false
 notionId: 77638e19-7c0f-4be6-8030-db4304bf2325

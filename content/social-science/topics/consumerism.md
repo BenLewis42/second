@@ -6,7 +6,7 @@ tags:
   - retail
   - waste
 date: '2023-12-16'
-excerpt: Notes on consumer return culture, including wardrobing and the scale of retail returns in the US.
+excerpt: 'Notes on consumer return culture, including wardrobing and the scale of retail returns in the US.'
 stub: true
 verified: false
 notionId: 1a2acc29-4912-4f48-affb-7d6e5b31c809

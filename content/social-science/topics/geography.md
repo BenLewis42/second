@@ -6,7 +6,7 @@ tags:
   - mountains
   - volcanoes
 date: '2024-01-29'
-excerpt: Notable North American peaks including Mount Rainier and Denali, with geological and historical context.
+excerpt: 'Notable North American peaks including Mount Rainier and Denali, with geological and historical context.'
 stub: false
 verified: false
 notionId: aa912853-3af1-4987-8060-b248d965d980

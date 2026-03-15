@@ -7,7 +7,7 @@ tags:
   - ecmascript
   - node
 date: '2024-08-24'
-excerpt: Overview of JavaScript, the core web programming language covering its runtime model, hoisting, Node.js, and falsy values.
+excerpt: 'Overview of JavaScript, the core web programming language covering its runtime model, hoisting, Node.js, and falsy values.'
 stub: false
 verified: false
 notionId: 9995630c-a7fd-402e-b727-2ecedfec90f4

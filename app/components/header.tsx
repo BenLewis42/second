@@ -8,6 +8,7 @@ const navCategories = [
   { href: '/social-science', label: 'Social Science' },
   { href: '/spirit', label: 'Spirit' },
   { href: '/culture', label: 'Culture' },
+  { href: '/reference', label: 'Reference' },
 ];
 
 export default function Header() {

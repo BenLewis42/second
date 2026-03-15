@@ -7,7 +7,7 @@ tags:
   - sociology
   - racism
 date: '2024-09-19'
-excerpt: An overview of race as a social construct, its historical development, and its implications for science and society.
+excerpt: 'An overview of race as a social construct, its historical development, and its implications for science and society.'
 stub: false
 verified: false
 notionId: b011d167-7d4e-4ec1-93b2-de7c0a459c29

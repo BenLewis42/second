@@ -1,12 +1,12 @@
 ---
-title: "C#"
+title: C#
 category: CS
 tags:
   - csharp
   - dotnet
   - object-oriented
 date: '2025-10-13'
-excerpt: "C# cheat sheet covering data types, control flow, collections, LINQ, async/await, classes, interfaces, and modern language features."
+excerpt: 'C# cheat sheet covering data types, control flow, collections, LINQ, async/await, classes, interfaces, and modern language features.'
 stub: false
 verified: false
 notionId: 25ba584d-bff3-808d-bd2a-c4d0103ec988

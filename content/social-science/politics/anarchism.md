@@ -7,7 +7,7 @@ tags:
   - socialism
   - libertarian-socialism
 date: '2025-05-29'
-excerpt: An overview of anarchism as a political philosophy opposing all forms of authority, advocating stateless societies and voluntary association.
+excerpt: 'An overview of anarchism as a political philosophy opposing all forms of authority, advocating stateless societies and voluntary association.'
 stub: false
 verified: false
 notionId: 174a584d-bff3-8056-a892-d0df656a5575
