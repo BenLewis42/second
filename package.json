@@ -22,7 +22,6 @@
     "output-fact-check-for-llm": "tsx scripts/output-fact-check-for-llm.ts"
   },
   "dependencies": {
-    "fuse.js": "^7.1.0",
     "gray-matter": "^4.0.3",
     "marked": "^11.0.0",
     "next": "^14.0.0",

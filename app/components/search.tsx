@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Fuse, { type IFuseOptions, type FuseResult } from 'fuse.js';
 
 export interface SearchEntry {
   title: string;
@@ -13,18 +12,57 @@ export interface SearchEntry {
   body: string;
 }
 
-const fuseOptions: IFuseOptions<SearchEntry> = {
-  keys: [
-    { name: 'title', weight: 3 },
-    { name: 'tags', weight: 2 },
-    { name: 'excerpt', weight: 1.5 },
-    { name: 'body', weight: 0.5 },
-  ],
-  threshold: 0.35,
-  includeMatches: true,
-  minMatchCharLength: 2,
-  ignoreLocation: true,
-};
+interface SearchResult {
+  item: SearchEntry;
+  titleIndices: [number, number][];
+  bodyIndices: [number, number][];
+  excerptIndices: [number, number][];
+  matchedOn: 'title' | 'tags' | 'excerpt' | 'body';
+}
+
+function findAllIndices(text: string, phrase: string): [number, number][] {
+  const indices: [number, number][] = [];
+  const lower = text.toLowerCase();
+  const target = phrase.toLowerCase();
+  let pos = 0;
+  while (pos < lower.length) {
+    const idx = lower.indexOf(target, pos);
+    if (idx === -1) break;
+    indices.push([idx, idx + target.length - 1]);
+    pos = idx + 1;
+  }
+  return indices;
+}
+
+function searchEntries(entries: SearchEntry[], query: string): SearchResult[] {
+  const q = query.toLowerCase();
+  const results: SearchResult[] = [];
+
+  for (const item of entries) {
+    const titleIndices = findAllIndices(item.title, q);
+    const bodyIndices = findAllIndices(item.body, q);
+    const excerptIndices = findAllIndices(item.excerpt, q);
+    const tagMatch = item.tags.some((t) => t.toLowerCase().includes(q));
+
+    if (titleIndices.length || bodyIndices.length || excerptIndices.length || tagMatch) {
+      const matchedOn = titleIndices.length
+        ? 'title'
+        : excerptIndices.length
+          ? 'excerpt'
+          : bodyIndices.length
+            ? 'body'
+            : 'tags';
+      results.push({ item, titleIndices, bodyIndices, excerptIndices, matchedOn });
+    }
+  }
+
+  results.sort((a, b) => {
+    const order = { title: 0, tags: 1, excerpt: 2, body: 3 };
+    return order[a.matchedOn] - order[b.matchedOn];
+  });
+
+  return results.slice(0, 40);
+}
 
 function formatCategory(s: string) {
   return s
@@ -35,50 +73,38 @@ function formatCategory(s: string) {
 
 type HighlightParts = { text: string; bold: boolean }[];
 
-function highlightMatch(
-  text: string,
-  indices: readonly [number, number][] | undefined
-): string | HighlightParts {
-  if (!indices || !text) return text;
-  const chars = [...text];
-  const highlighted: boolean[] = new Array(chars.length).fill(false);
-  for (const [start, end] of indices) {
-    for (let i = start; i <= end && i < chars.length; i++) highlighted[i] = true;
-  }
+function buildHighlight(text: string, indices: [number, number][]): HighlightParts {
+  if (!indices.length || !text) return [{ text, bold: false }];
   const parts: HighlightParts = [];
-  let cur = { text: '', bold: highlighted[0] };
-  for (let i = 0; i < chars.length; i++) {
-    if (highlighted[i] !== cur.bold) {
-      parts.push(cur);
-      cur = { text: '', bold: highlighted[i] };
-    }
-    cur.text += chars[i];
+  let cursor = 0;
+  for (const [start, end] of indices) {
+    if (start > cursor) parts.push({ text: text.slice(cursor, start), bold: false });
+    parts.push({ text: text.slice(start, end + 1), bold: true });
+    cursor = end + 1;
   }
-  parts.push(cur);
+  if (cursor < text.length) parts.push({ text: text.slice(cursor), bold: false });
   return parts;
 }
 
 function extractSnippet(
   body: string,
-  indices: readonly [number, number][] | undefined,
-  radius = 60
+  indices: [number, number][],
+  radius = 80
 ): HighlightParts | null {
-  if (!indices || indices.length === 0 || !body) return null;
+  if (!indices.length || !body) return null;
 
-  const firstMatch = indices[0];
-  const start = Math.max(0, firstMatch[0] - radius);
-  const end = Math.min(body.length, firstMatch[1] + radius + 1);
-
+  const first = indices[0];
+  const start = Math.max(0, first[0] - radius);
+  const end = Math.min(body.length, first[1] + radius + 1);
   const slice = body.slice(start, end);
-  const offsetIndices: [number, number][] = indices
+
+  const localIndices: [number, number][] = indices
     .filter(([s, e]) => s >= start && e < end)
     .map(([s, e]) => [s - start, e - start] as [number, number]);
 
+  const parts = buildHighlight(slice, localIndices);
   const prefix = start > 0 ? '...' : '';
   const suffix = end < body.length ? '...' : '';
-
-  const parts = highlightMatch(slice, offsetIndices);
-  if (!Array.isArray(parts)) return null;
 
   if (prefix) parts[0] = { ...parts[0], text: prefix + parts[0].text };
   const last = parts[parts.length - 1];
@@ -87,27 +113,27 @@ function extractSnippet(
   return parts;
 }
 
+function renderParts(parts: HighlightParts) {
+  return parts.map((p, j) =>
+    p.bold ? <mark key={j}>{p.text}</mark> : <span key={j}>{p.text}</span>
+  );
+}
+
 export default function Search({ entries }: { entries: SearchEntry[] }) {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<FuseResult<SearchEntry>[]>([]);
+  const [results, setResults] = useState<SearchResult[]>([]);
   const [selectedIdx, setSelectedIdx] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const fuseRef = useRef<Fuse<SearchEntry> | null>(null);
 
   useEffect(() => {
-    fuseRef.current = new Fuse(entries, fuseOptions);
-  }, [entries]);
-
-  useEffect(() => {
-    if (!fuseRef.current || query.length < 2) {
+    if (query.length < 2) {
       setResults([]);
       setSelectedIdx(0);
       return;
     }
-    const r = fuseRef.current.search(query, { limit: 30 });
-    setResults(r);
+    setResults(searchEntries(entries, query));
     setSelectedIdx(0);
-  }, [query]);
+  }, [query, entries]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -175,16 +201,16 @@ export default function Search({ entries }: { entries: SearchEntry[] }) {
             <div className="search-result-list">
               <div className="search-result-count">{results.length} result{results.length !== 1 ? 's' : ''}</div>
               {results.map((r, i) => {
-                const titleMatch = r.matches?.find((m) => m.key === 'title');
-                const bodyMatch = r.matches?.find((m) => m.key === 'body');
-                const excerptMatch = r.matches?.find((m) => m.key === 'excerpt');
-                const titleParts = highlightMatch(r.item.title, titleMatch?.indices);
+                const titleParts = r.titleIndices.length
+                  ? buildHighlight(r.item.title, r.titleIndices)
+                  : null;
 
-                const snippet = bodyMatch
-                  ? extractSnippet(r.item.body, bodyMatch.indices)
-                  : excerptMatch
-                    ? highlightMatch(r.item.excerpt, excerptMatch.indices)
+                const snippet = r.bodyIndices.length
+                  ? extractSnippet(r.item.body, r.bodyIndices)
+                  : r.excerptIndices.length
+                    ? buildHighlight(r.item.excerpt, r.excerptIndices)
                     : null;
+
                 const showStaticExcerpt = !snippet && r.item.excerpt;
 
                 return (
@@ -195,17 +221,11 @@ export default function Search({ entries }: { entries: SearchEntry[] }) {
                     onMouseEnter={() => setSelectedIdx(i)}
                   >
                     <div className="search-result-title">
-                      {Array.isArray(titleParts)
-                        ? titleParts.map((p, j) =>
-                            p.bold ? <mark key={j}>{p.text}</mark> : <span key={j}>{p.text}</span>
-                          )
-                        : r.item.title}
+                      {titleParts ? renderParts(titleParts) : r.item.title}
                     </div>
-                    {snippet && Array.isArray(snippet) ? (
-                      <div className="search-result-snippet">
-                        {snippet.map((p, j) =>
-                          p.bold ? <mark key={j}>{p.text}</mark> : <span key={j}>{p.text}</span>
-                        )}
+                    {snippet ? (
+                      <div className={r.bodyIndices.length ? 'search-result-snippet' : 'search-result-excerpt'}>
+                        {renderParts(snippet)}
                       </div>
                     ) : showStaticExcerpt ? (
                       <div className="search-result-excerpt">{r.item.excerpt}</div>
