@@ -15,7 +15,7 @@ export default async function SearchPage() {
     category: file.category,
     subcategory: file.subcategory,
     slug: file.slug,
-    body: file.content.slice(0, 500).replace(/^---[\s\S]*?---/, '').trim(),
+    body: file.content.replace(/^---[\s\S]*?---/, '').replace(/[#*_\[\]`>|]/g, '').trim().slice(0, 2000),
   }));
 
   return (

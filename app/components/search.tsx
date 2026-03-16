@@ -33,14 +33,19 @@ function formatCategory(s: string) {
     .join(' ');
 }
 
-function highlightMatch(text: string, indices: readonly [number, number][] | undefined) {
+type HighlightParts = { text: string; bold: boolean }[];
+
+function highlightMatch(
+  text: string,
+  indices: readonly [number, number][] | undefined
+): string | HighlightParts {
   if (!indices || !text) return text;
   const chars = [...text];
   const highlighted: boolean[] = new Array(chars.length).fill(false);
   for (const [start, end] of indices) {
     for (let i = start; i <= end && i < chars.length; i++) highlighted[i] = true;
   }
-  const parts: { text: string; bold: boolean }[] = [];
+  const parts: HighlightParts = [];
   let cur = { text: '', bold: highlighted[0] };
   for (let i = 0; i < chars.length; i++) {
     if (highlighted[i] !== cur.bold) {
@@ -50,6 +55,35 @@ function highlightMatch(text: string, indices: readonly [number, number][] | und
     cur.text += chars[i];
   }
   parts.push(cur);
+  return parts;
+}
+
+function extractSnippet(
+  body: string,
+  indices: readonly [number, number][] | undefined,
+  radius = 60
+): HighlightParts | null {
+  if (!indices || indices.length === 0 || !body) return null;
+
+  const firstMatch = indices[0];
+  const start = Math.max(0, firstMatch[0] - radius);
+  const end = Math.min(body.length, firstMatch[1] + radius + 1);
+
+  const slice = body.slice(start, end);
+  const offsetIndices: [number, number][] = indices
+    .filter(([s, e]) => s >= start && e < end)
+    .map(([s, e]) => [s - start, e - start] as [number, number]);
+
+  const prefix = start > 0 ? '...' : '';
+  const suffix = end < body.length ? '...' : '';
+
+  const parts = highlightMatch(slice, offsetIndices);
+  if (!Array.isArray(parts)) return null;
+
+  if (prefix) parts[0] = { ...parts[0], text: prefix + parts[0].text };
+  const last = parts[parts.length - 1];
+  parts[parts.length - 1] = { ...last, text: last.text + suffix };
+
   return parts;
 }
 
@@ -142,7 +176,16 @@ export default function Search({ entries }: { entries: SearchEntry[] }) {
               <div className="search-result-count">{results.length} result{results.length !== 1 ? 's' : ''}</div>
               {results.map((r, i) => {
                 const titleMatch = r.matches?.find((m) => m.key === 'title');
+                const bodyMatch = r.matches?.find((m) => m.key === 'body');
+                const excerptMatch = r.matches?.find((m) => m.key === 'excerpt');
                 const titleParts = highlightMatch(r.item.title, titleMatch?.indices);
+
+                const snippet = bodyMatch
+                  ? extractSnippet(r.item.body, bodyMatch.indices)
+                  : excerptMatch
+                    ? highlightMatch(r.item.excerpt, excerptMatch.indices)
+                    : null;
+                const showStaticExcerpt = !snippet && r.item.excerpt;
 
                 return (
                   <a
@@ -158,9 +201,15 @@ export default function Search({ entries }: { entries: SearchEntry[] }) {
                           )
                         : r.item.title}
                     </div>
-                    {r.item.excerpt && (
+                    {snippet && Array.isArray(snippet) ? (
+                      <div className="search-result-snippet">
+                        {snippet.map((p, j) =>
+                          p.bold ? <mark key={j}>{p.text}</mark> : <span key={j}>{p.text}</span>
+                        )}
+                      </div>
+                    ) : showStaticExcerpt ? (
                       <div className="search-result-excerpt">{r.item.excerpt}</div>
-                    )}
+                    ) : null}
                     <div className="search-result-meta">
                       <span className="search-result-category">
                         {formatCategory(r.item.category)}
