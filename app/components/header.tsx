@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+
 const navCategories = [
   { href: '/people', label: 'People' },
   { href: '/philosophy', label: 'Philosophy' },
@@ -12,6 +14,17 @@ const navCategories = [
 ];
 
 export default function Header() {
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        window.location.href = '/search/';
+      }
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
   return (
     <header className="header">
       <nav className="header-nav">
@@ -38,6 +51,14 @@ export default function Header() {
               onMouseLeave={(e) => e.currentTarget.style.color = 'var(--link-color)'}
             >
               Wiki
+            </a>
+            <a href="/search" className="header-search-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+              Search
+              <kbd>⌘K</kbd>
             </a>
           </div>
         </div>
