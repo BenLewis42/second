@@ -115,7 +115,7 @@ The system maintains a graph of all connections to show:
 │   ├── automation-fact-check.ts    # Batch fact-check prompt for multiple files
 │   ├── automation-unfilled-tags.ts # Optional: generate drafts only (no stub/verified queues)
 │   └── test-automation.ts     # Run automation + fact-check tests
-├── docs/                      # Documentation (FACT_CHECKING.md, AUTOMATION.md)
+├── docs/                      # Documentation (FACT_CHECKING.md, AUTOMATION.md, TAXONOMY.md)
 ├── package.json
 ├── next.config.js             # Next.js configuration (static export)
 └── tsconfig.json              # TypeScript configuration
