@@ -6,7 +6,7 @@ tags:
   - society
   - overview
 date: '2024-03-19'
-excerpt: Hub for cultural topics in this wiki—arts, media, places, and patterns of shared life— with links into living sub-pages.
+excerpt: 'Hub for cultural topics in this wiki—arts, media, places, and patterns of shared life— with links into living sub-pages.'
 stub: false
 verified: false
 notionId: 1242731c-4a6a-42fc-a76f-fc2ed63ac8e6

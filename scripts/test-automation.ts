@@ -33,7 +33,11 @@ async function main() {
     const result = extractClaims(formsPath);
     ok('Extract claims (forms.md)', result.claims.length > 0, `${result.claims.length} claims`);
     const cursorOut = buildMultiFileCursorOutput([result]);
-    ok('Fact-check prompt build', cursorOut.length > 200 && cursorOut.includes('Reply format'), 'has intro + reply format');
+    ok(
+      'Fact-check prompt build',
+      cursorOut.length > 200 && cursorOut.toLowerCase().includes('reply format'),
+      'has intro + reply format'
+    );
   } else {
     ok('Extract claims (forms.md)', false, 'file missing');
   }
@@ -47,7 +51,11 @@ async function main() {
   if (fs.existsSync(formsPath) && fs.existsSync(idealismPath)) {
     const results = [formsPath, idealismPath].map((p) => extractClaims(p));
     const multi = buildMultiFileCursorOutput(results);
-    ok('Multi-file fact-check prompt', multi.includes('## File:') && multi.includes('Reply format'), '2 files');
+    ok(
+      'Multi-file fact-check prompt',
+      multi.includes('## File:') && multi.toLowerCase().includes('reply format'),
+      '2 files'
+    );
   }
 
   // 5. Stub/verified queues (tagging drives populate and fact-check)

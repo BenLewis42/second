@@ -7,7 +7,7 @@ tags:
   - units
   - metrology
 date: '2024-12-07'
-excerpt: How quantities are defined, standardized, and communicated—SI, derived units, and practical limits of precision.
+excerpt: 'How quantities are defined, standardized, and communicated—SI, derived units, and practical limits of precision.'
 stub: false
 verified: false
 notionId: 155a584d-bff3-80de-b7ec-ce060ca66969

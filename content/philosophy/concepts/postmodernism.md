@@ -7,7 +7,7 @@ tags:
   - continental-philosophy
   - art-history
 date: '2025-11-18'
-excerpt: Late-twentieth-century currents in philosophy, arts, and criticism that stress plurality, skepticism toward grand narratives, and the role of language and power in shaping what counts as truth.
+excerpt: 'Late-twentieth-century currents in philosophy, arts, and criticism that stress plurality, skepticism toward grand narratives, and the role of language and power in shaping what counts as truth.'
 stub: false
 verified: false
 notionId: f5764dc3-25e9-4714-9cd1-d913eb45b3e8
