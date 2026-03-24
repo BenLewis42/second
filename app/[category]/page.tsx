@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { getCategories } from '@/lib/content';
+import { notFound } from 'next/navigation';
+import Breadcrumbs from '@/app/components/breadcrumbs';import { getCategories } from '@/lib/content';
 
 interface Props {
   params: {
@@ -19,18 +20,17 @@ export default function CategoryPage({ params }: Props) {
   const category = categories.find((c) => c.name === params.category);
 
   if (!category) {
-    return (
-      <div className="page-wrapper">
-        <h1>Category not found</h1>
-      </div>
-    );
+    notFound();
   }
 
   return (
     <div className="page-wrapper">
-      <Link href="/" className="back-link">
-        ← Back to Home
-      </Link>
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: category.label },
+        ]}
+      />
 
       <h1>{category.label}</h1>
 

@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import ArticleHeadingHash from '@/app/components/article-heading-hash';
-import { getCategories } from '@/lib/content';
+import Breadcrumbs from '@/app/components/breadcrumbs';
+import { formatCategoryName, getCategories } from '@/lib/content';
 import { getContentFile, getContentFiles, getBacklinks, getRelatedContent, getAllContent } from '@/lib/markdown';
 import { convertWikiLinks } from '@/lib/markdown';
 
@@ -44,12 +46,13 @@ export default async function ContentPage({ params }: Props) {
   );
 
   if (!file) {
-    return (
-      <div className="page-wrapper">
-        <h1>Content not found</h1>
-      </div>
-    );
+    notFound();
   }
+
+  const categories = getCategories();
+  const categoryMeta = categories.find((c) => c.name === params.category);
+  const categoryLabel = categoryMeta?.label ?? formatCategoryName(params.category);
+  const subLabel = formatCategoryName(params.subcategory);
 
   // Get all content for wiki link conversion
   const allContent = await getAllContent();
@@ -67,14 +70,14 @@ export default async function ContentPage({ params }: Props) {
 
   return (
     <div className="page-wrapper">
-      <Link
-        href={`/${params.category}/${params.subcategory}`}
-        className="back-link"
-      >
-        ← Back to{' '}
-        {params.subcategory.charAt(0).toUpperCase() +
-          params.subcategory.slice(1)}
-      </Link>
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: categoryLabel, href: `/${params.category}` },
+          { label: subLabel, href: `/${params.category}/${params.subcategory}` },
+          { label: file.frontmatter.title },
+        ]}
+      />
 
       <article className="article">
         <ArticleHeadingHash />

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Breadcrumbs from '@/app/components/breadcrumbs';
 import { getAllContent } from '@/lib/markdown';
 import Search, { type SearchEntry } from '@/app/components/search';
 
@@ -28,6 +29,7 @@ export default async function SearchPage() {
 
   return (
     <div className="page-wrapper">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Search' }]} />
       <div className="page-section">
         <h1>Search</h1>
         <Search entries={entries} />

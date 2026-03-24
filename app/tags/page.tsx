@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Breadcrumbs from '@/app/components/breadcrumbs';
 import { getAllTags, getAllContent } from '@/lib/markdown';
 import { buildContentGraph } from '@/lib/graph';
 
@@ -34,9 +35,7 @@ export default async function TagsPage() {
 
   return (
     <div className="page-wrapper">
-      <Link href="/" className="back-link">
-        ← Back to Home
-      </Link>
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Wiki' }]} />
 
       <h1>Explore by Tags</h1>
       <p className="tags-intro">

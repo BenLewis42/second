@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Breadcrumbs from '@/app/components/breadcrumbs';
 import { redirect } from 'next/navigation';
 import { getAllTags, getContentByTag, getContentPathBySlug } from '@/lib/markdown';
 
@@ -25,9 +26,13 @@ export default async function TagPage({ params }: Props) {
 
   return (
     <div className="page-wrapper">
-      <Link href="/tags" className="back-link">
-        ← Back to All Tags
-      </Link>
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Wiki', href: '/tags' },
+          { label: `#${displayTag}` },
+        ]}
+      />
 
       <h1>#{displayTag}</h1>
       <p className="tags-intro">

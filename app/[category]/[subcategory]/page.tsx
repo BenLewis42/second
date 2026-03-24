@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import { getCategories } from '@/lib/content';
+import { notFound } from 'next/navigation';
+import Breadcrumbs from '@/app/components/breadcrumbs';
+import { formatCategoryName, getCategories } from '@/lib/content';
 import { getContentFiles } from '@/lib/markdown';
 
 interface Props {
@@ -33,25 +35,23 @@ export default async function SubcategoryPage({ params }: Props) {
   const category = categories.find((c) => c.name === params.category);
 
   if (!category || !category.subcategories.includes(params.subcategory)) {
-    return (
-      <div className="page-wrapper">
-        <h1>Content not found</h1>
-      </div>
-    );
+    notFound();
   }
 
   const files = await getContentFiles(params.category, params.subcategory);
+  const subLabel = formatCategoryName(params.subcategory);
 
   return (
     <div className="page-wrapper">
-      <Link href={`/${params.category}`} className="back-link">
-        ← Back to {category.label}
-      </Link>
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: '/' },
+          { label: category.label, href: `/${params.category}` },
+          { label: subLabel },
+        ]}
+      />
 
-      <h1>
-        {params.subcategory.charAt(0).toUpperCase() +
-          params.subcategory.slice(1)}
-      </h1>
+      <h1>{subLabel}</h1>
 
       <div className="entries-grid">
         {files.length === 0 ? (
