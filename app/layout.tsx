@@ -23,8 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="layout-body">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Header />
-        <main className="layout-main">{children}</main>
+        <main id="main-content" className="layout-main" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

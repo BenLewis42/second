@@ -1,8 +1,16 @@
+import type { Metadata } from 'next';
 import { getAllContent } from '@/lib/markdown';
 import Search, { type SearchEntry } from '@/app/components/search';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Search — Second',
+  description:
+    'Search across all entries in this commonplace book by title, tags, excerpt, and body text.',
+  openGraph: {
+    title: 'Search — Second',
+    description:
+      'Search across all entries in this commonplace book by title, tags, excerpt, and body text.',
+  },
 };
 
 export default async function SearchPage() {

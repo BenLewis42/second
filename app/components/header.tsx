@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const navCategories = [
   { href: '/people', label: 'People' },
@@ -14,6 +14,14 @@ const navCategories = [
 ];
 
 export default function Header() {
+  const [shortcutLabel, setShortcutLabel] = useState('Ctrl+K');
+
+  useEffect(() => {
+    if (typeof navigator !== 'undefined' && /Mac/.test(navigator.userAgent)) {
+      setShortcutLabel('⌘K');
+    }
+  }, []);
+
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -43,7 +51,7 @@ export default function Header() {
             </a>
             <a href="/search" className="header-search-link">
               [search]
-              <kbd>⌘K</kbd>
+              <kbd>{shortcutLabel}</kbd>
             </a>
           </div>
         </div>

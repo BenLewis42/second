@@ -139,9 +139,11 @@ export default function Search({ entries }: { entries: SearchEntry[] }) {
     (e: React.KeyboardEvent) => {
       if (e.key === 'ArrowDown') {
         e.preventDefault();
+        if (results.length === 0) return;
         setSelectedIdx((i) => Math.min(i + 1, results.length - 1));
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
+        if (results.length === 0) return;
         setSelectedIdx((i) => Math.max(i - 1, 0));
       } else if (e.key === 'Enter' && results[selectedIdx]) {
         const item = results[selectedIdx].item;
@@ -170,8 +172,14 @@ export default function Search({ entries }: { entries: SearchEntry[] }) {
     inputRef.current?.focus();
   }, []);
 
+  useEffect(() => {
+    if (query.length < 2 || results.length === 0) return;
+    const el = document.querySelector<HTMLElement>(`[data-search-idx="${selectedIdx}"]`);
+    el?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }, [selectedIdx, results, query]);
+
   return (
-    <div className="search-container">
+    <div className="search-container" role="search" aria-label="Search this site">
       <div className="search-input-wrap">
         <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="11" cy="11" r="8" />
@@ -179,9 +187,10 @@ export default function Search({ entries }: { entries: SearchEntry[] }) {
         </svg>
         <input
           ref={inputRef}
-          type="text"
+          type="search"
           className="search-input"
           placeholder="Search entries..."
+          aria-label="Search entries by title, tags, or text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -196,10 +205,14 @@ export default function Search({ entries }: { entries: SearchEntry[] }) {
       {query.length >= 2 && (
         <div className="search-results">
           {results.length === 0 ? (
-            <div className="search-empty">No results for &ldquo;{query}&rdquo;</div>
+            <div className="search-empty" role="status" aria-live="polite">
+              No results for &ldquo;{query}&rdquo;
+            </div>
           ) : (
             <div className="search-result-list">
-              <div className="search-result-count">{results.length} result{results.length !== 1 ? 's' : ''}</div>
+              <div className="search-result-count" role="status" aria-live="polite">
+                {results.length} result{results.length !== 1 ? 's' : ''}
+              </div>
               {results.map((r, i) => {
                 const titleParts = r.titleIndices.length
                   ? buildHighlight(r.item.title, r.titleIndices)
@@ -216,6 +229,7 @@ export default function Search({ entries }: { entries: SearchEntry[] }) {
                 return (
                   <a
                     key={`${r.item.category}/${r.item.subcategory}/${r.item.slug}`}
+                    data-search-idx={i}
                     href={`/${r.item.category}/${r.item.subcategory}/${r.item.slug}/`}
                     className={`search-result-item ${i === selectedIdx ? 'search-result-selected' : ''}`}
                     onMouseEnter={() => setSelectedIdx(i)}
