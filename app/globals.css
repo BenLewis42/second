@@ -983,6 +983,29 @@ hr {
   font-size: 0.9rem;
 }
 
+.header-surprise {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--link-color);
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed var(--border-color);
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header-surprise:hover {
+  color: var(--link-color-hover);
+  border-bottom-color: var(--link-color-hover);
+}
+
+.header-surprise:focus-visible {
+  outline: 2px solid var(--accent-solid);
+  outline-offset: 2px;
+}
+
 .header-search-link {
   display: inline-flex;
   align-items: center;

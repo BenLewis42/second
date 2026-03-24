@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "A personal second brain for art and philosophy, published as a web resource",
   "scripts": {
+    "prebuild": "tsx scripts/write-article-paths.ts",
+    "predev": "tsx scripts/write-article-paths.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

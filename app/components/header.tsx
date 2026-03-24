@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import SurpriseMeButton from './surprise-me-button';
 
 const navCategories = [
   { href: '/people', label: 'People' },
@@ -49,6 +50,7 @@ export default function Header() {
             <a href="/tags" className="nav-link-active">
               Wiki
             </a>
+            <SurpriseMeButton />
             <a href="/search" className="header-search-link">
               [search]
               <kbd>{shortcutLabel}</kbd>
