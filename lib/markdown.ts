@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { marked } from 'marked';
+import { marked, Renderer } from 'marked';
 import { contentDir } from './content';
 
 export interface Frontmatter {
@@ -25,6 +25,38 @@ export interface ContentFile {
   htmlContent?: string;
   category?: string;
   subcategory?: string;
+}
+
+/** Slug for heading `id` — stable, URL-safe, unique per document. */
+export function slugifyHeadingId(raw: string, usedIds: Set<string>): string {
+  let base = raw
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+  if (!base) base = 'section';
+  let id = base;
+  let n = 2;
+  while (usedIds.has(id)) {
+    id = `${base}-${n++}`;
+  }
+  usedIds.add(id);
+  return id;
+}
+
+export function markdownToHtml(content: string): string {
+  const usedIds = new Set<string>();
+  const renderer = new Renderer();
+  renderer.heading = (text: string, level: number, raw: string) => {
+    const id = slugifyHeadingId(raw, usedIds);
+    return `<h${level} id="${id}">${text}</h${level}>\n`;
+  };
+  const out = marked.parse(content, { renderer });
+  if (typeof out !== 'string') {
+    throw new Error('markdownToHtml: expected synchronous marked output');
+  }
+  return out;
 }
 
 export async function getContentFiles(
@@ -69,13 +101,13 @@ export async function getContentFile(
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
-  const htmlContent = await marked(content);
+  const htmlContent = markdownToHtml(content);
 
   return {
     frontmatter: data as Frontmatter,
     content,
     slug,
-    htmlContent: htmlContent.toString(),
+    htmlContent,
   };
 }
 

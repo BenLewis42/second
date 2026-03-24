@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ArticleHeadingHash from '@/app/components/article-heading-hash';
 import { getCategories } from '@/lib/content';
 import { getContentFile, getContentFiles, getBacklinks, getRelatedContent, getAllContent } from '@/lib/markdown';
 import { convertWikiLinks } from '@/lib/markdown';
@@ -76,6 +77,7 @@ export default async function ContentPage({ params }: Props) {
       </Link>
 
       <article className="article">
+        <ArticleHeadingHash />
         <header className="article-header">
           <h1 className="article-title">
             {file.frontmatter.title}
