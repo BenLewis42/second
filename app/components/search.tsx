@@ -175,7 +175,7 @@ export default function Search({ entries }: { entries: SearchEntry[] }) {
   useEffect(() => {
     if (query.length < 2 || results.length === 0) return;
     const el = document.querySelector<HTMLElement>(`[data-search-idx="${selectedIdx}"]`);
-    el?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    el?.scrollIntoView({ block: 'nearest', behavior: 'auto' });
   }, [selectedIdx, results, query]);
 
   return (
